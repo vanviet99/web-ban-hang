@@ -2,6 +2,9 @@ const userModal = require("../modal/userModal")
 const user = require("../modal/userModal")
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken')
+// accesstoken
+
+let refreshTokon = []
 const authController = {
     //register
     registerUser : async (req, res) =>{
@@ -14,8 +17,26 @@ const authController = {
                 })
                 res.status(200).json({message:'sucsess',newusser})
             } catch (error) {
-                res.status(500).json(error)
+                res.status(500).json({message:'Username da ton tai',error})
             }
+    },
+    getaccesstoken:(user) =>{
+        return jwt.sign({
+            id:user._id,
+            admin:user.admin
+        },
+       'vanviet',
+        {expiresIn: "30s"}
+        )
+    },
+    getrefreshTokon: (user) =>{
+        return jwt.sign({
+            id:user._id,
+            admin:user.admin
+        },
+       'vanvietrefresh',
+        {expiresIn: "365d"}
+        )
     },
     loginUser : async(req,res) =>{
         try {
@@ -31,13 +52,15 @@ const authController = {
                 res.status(404).json("wrong password")
             }
             if(user && valipassword){
-                const accesstoken=   jwt.sign({
-                    id:user._id,
-                    admin:user.admin
-                },
-               'vanviet',
-                {expiresIn: "30d"}
-                )
+                const accesstoken =authController.getaccesstoken(user)
+                const refreshTokon = authController.getrefreshTokon(user)
+                refreshTokon.pushrefreshTokon
+                res.cookie("refreshTokon", refreshTokon,{
+                    httpOnly:true,
+                    secure:false,
+                    path: "/",
+                    sameSite:"strict",
+                })
                 const {password, ...others} = user._doc
                 res.status(200).json({message:'login thanh cong',...others,accesstoken})
             }
@@ -45,6 +68,30 @@ const authController = {
 
             res.status(500).json({message:'Login khong thanh cong',error},)
         }
+    },
+requestrefreshtoken: async(req,res) =>{
+    const refreshTokon = req.cookies.refreshTokon
+    if(!refreshTokon) refreshTokon.status(401).json("bạn chưa đăng nhập")
+    if(!refreshTokon.includes(refreshTokon)){
+        return res.status(403).json("refreshTokon is not valid")
     }
+    jwt.verify(refreshTokon,'vanvietrefresh',(err,user)=>{
+        if(err){
+            console.log(err)
+        }
+        refreshTokon = refreshTokon.filter((token)=> token !== refreshTokon)
+        const newaccesstoken = authController.getrefreshTokon(user)
+        const newrefreshTokon = authController.getrefreshTokon(user)
+        refreshTokon.push(newrefreshTokon)
+        res.cookie("refreshTokon", newrefreshTokon,{
+            httpOnly:true,
+            secure:false,
+            path: "/",
+            sameSite:"strict",
+        })
+        res.status(200).json({accesstoken:newaccesstoken})
+    })
+ 
+}
 }
 module.exports = authController;

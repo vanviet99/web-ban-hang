@@ -1,0 +1,53 @@
+.infoform{
+    margin: 0 auto;
+    width: 500px;
+    background-color: rgb(66, 68, 68);
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form_one{
+    position: relative;
+}
+.label_form{
+display: block;
+text-align: left;
+margin-bottom: 15px;
+color: white;
+}
+
+.input_form{
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    height: 40px;
+}
+.error{
+    position: absolute;
+    bottom: -7px;
+    text-align: left;
+    color: red;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+.btn-buttonn{
+    outline: none;
+    border: none;
+    padding: 10px 30px; 
+    width: 50%;
+}
+.header {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+.form_btn{
+    width: 100%;
+    text-align: center;
+}
