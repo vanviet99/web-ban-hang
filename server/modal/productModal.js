@@ -2,18 +2,19 @@ const mongoose = require("mongoose")
 mongoose.connect('mongodb://127.0.0.1:27017/webbanhang');
 
 const productSchema = mongoose.Schema({
-    userid :{
-        type: String,
-        ref:'user'
-    },
     name : String,
     price: Number,
-    title: String,
+    description: String,
     sale :{
         type:Number,
         default:0
     },
-    date: Date
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    stock: Number,
+    thumb:String
 },{collection:'product'})
 
 const productModal = mongoose.model("product",productSchema)

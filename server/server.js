@@ -12,9 +12,7 @@ app.use(cors())
 app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.json())
-
 app.use("/v1/auth/", authrroter)
-
 app.use("/v1/user/", userrouter)
 app.listen(8000,()=>{
   console.log("server is running")

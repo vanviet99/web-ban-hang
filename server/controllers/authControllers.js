@@ -61,6 +61,7 @@ const authController = {
                     path: "/",
                     sameSite:"strict",
                 })
+            
                 const {password, ...others} = user._doc
                 res.status(200).json({message:'login thanh cong',...others,accesstoken})
             }

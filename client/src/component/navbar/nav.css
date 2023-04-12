@@ -1,0 +1,13 @@
+.nav_link {
+   text-decoration: none;
+}
+.nav_search{
+   border: none;
+   outline: none;
+   width: 300px;
+   padding-left: 10px;
+}
+.white{
+    color: white;
+    padding-left: 10px;
+}

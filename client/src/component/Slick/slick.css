@@ -1,0 +1,45 @@
+.slick-prev{
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    display: block !important;
+}
+.slick-next{
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  display: none !important;
+}
+.slick-slider{
+    position: relative;
+    cursor: pointer;
+}
+.slick-slider:hover .slick-next,.slick-prev{
+        display: block !important;
+}
+
+.slick-next:hover{
+    background-color: black;
+}
+.slick-dots li.slick-active button:before{
+    font-size: 20px;
+   color: white;
+   position: absolute;
+    
+}
+.slick-dots{
+    position: absolute;
+    bottom: 10px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center
+}
+
+.slick-dots li button:before{
+ color: black;
+}

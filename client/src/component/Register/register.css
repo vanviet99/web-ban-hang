@@ -17,6 +17,7 @@ display: block;
 text-align: left;
 margin-bottom: 15px;
 color: white;
+margin-top: 15px;
 }
 
 .input_form{
@@ -50,4 +51,15 @@ color: white;
 .form_btn{
     width: 100%;
     text-align: center;
+    margin-top: 20px;
+}
+
+.linhchocho{
+    color: wheat;
+    margin-top: 5px;
+}
+.linhcho{
+    text-decoration: none;
+    text-transform: uppercase;
+color: red;
 }

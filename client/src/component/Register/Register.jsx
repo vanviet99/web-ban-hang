@@ -3,6 +3,7 @@ import {useFormik} from 'formik'
 import * as Yup from "yup"
 import register from './register.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -57,6 +58,7 @@ function Register() {
                </div>
                 <div className="form_btn">
                 <button type='submit' className='btn-buttonn'>Register</button>
+                <p className='linhchocho'>Bạn đã có tài khoản <Link to='/login' className='linhcho'>login</Link></p>
                 </div>
             </form>
         </section>

@@ -1,0 +1,22 @@
+.home{
+    position: relative;
+}
+.home_top{
+position: fixed;
+bottom:200px;
+right: 10px;
+}
+
+.home-top-animation{
+    animation: linh ease-in 2s infinite;
+    font-size: 50px;
+}
+.home-top-animation:hover{
+    color: aquamarine;
+}
+
+    @keyframes linh {
+    0% { color: #f8320a; }
+    50% { color: #fff; }
+    100% { color: #F8CD0A; }
+    }
