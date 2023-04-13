@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { AiOutlineShoppingCart ,AiOutlineStar} from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
-import product from './product.css'
+import './product.css'
 import { Pagination } from 'antd';
 function Product() {
   return (

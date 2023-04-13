@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { AiFillCar,AiFillGift ,AiTwotoneStar} from "react-icons/ai";
 import { BiSupport } from "react-icons/bi";
-import suport from './suport.css'
+import './suport.css'
 function Support() {
   return (
     <Container className='mt50'>
