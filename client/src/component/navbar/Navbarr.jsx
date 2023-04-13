@@ -36,7 +36,7 @@ function Navbarr() {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Brand>{userr ? <div>{userr}<a href=''className='nav_link white' onClick={()=>logout()}>Logout</a></div>: <div><BsFillFilePersonFill></BsFillFilePersonFill><Link to='login' className='nav_link white'>Đăng Nhập</Link></div>}</Navbar.Brand>
-        <Navbar.Brand> <BsCartCheck></BsCartCheck></Navbar.Brand>
+        <Navbar.Brand className='cart_quantyti'> <BsCartCheck></BsCartCheck><span>0</span></Navbar.Brand>
       </Container>
     </Navbar>
   );
