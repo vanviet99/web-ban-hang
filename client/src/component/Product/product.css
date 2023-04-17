@@ -64,3 +64,30 @@
 .product_cart-cart:hover{
 color: rgb(229, 153, 76);
 }
+.showmore{
+    padding: 8px 16px;
+    background-color: #fff;
+    color: black;
+}
+.showmore:hover{
+    background-color: #ccc;
+}
+.showmore__block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+.product_img{
+    position: relative;
+}
+.btnsale{
+    top: 30px;
+    left: 0;
+    background-color: #f8531f;
+    padding: 2px 8px;
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    color: #fff;
+}

@@ -8,6 +8,7 @@ import {
   Routes, Route 
 } from "react-router-dom";
 import Home from './component/Home/Home';
+import BrandProduct from './component/BrandProduct/BrandProduct';
 function App() {
   return (
    <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
     <Route path='/login' element={<Login></Login>}></Route>
     <Route path='/' element={<Home></Home>}></Route>
     <Route path='/:id' element={<Infoproduct></Infoproduct>}></Route>
+    <Route path='/brand/:brand' element={<BrandProduct></BrandProduct>}></Route>
     <Route path='/admin' element={<Admin></Admin>}></Route>
    </Routes>
    </BrowserRouter>

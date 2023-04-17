@@ -1,0 +1,26 @@
+.myinfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #f8531f;
+}
+.myinfo__block__left, .myinfo__block__right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.myinfo__block__left p, .myinfo__block__right p{
+    color: white;
+    font-size: 13px;
+     margin: 0px 10px;
+}
+.myinfo__block__left a {
+    font-size: 13px;
+    color: white;
+    text-decoration: underline 0px;
+    margin-left: 10px;
+}
+.myinfo__block__right div{
+    color: white;
+}
