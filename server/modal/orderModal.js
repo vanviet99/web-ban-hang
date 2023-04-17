@@ -28,15 +28,15 @@ const orderSchema = mongoose.Schema({
 },{collection:'order'})
 
 const orderModal = mongoose.model("order",orderSchema)
-orderModal.create({
-    userId:'642cf4ba0937e1ef085969ee',list:[{productId:'6436984b1502de71bc95272b',quantity:2}]
-})
-.then((data)=>{
-    console.log(data)
-})
-.catch((err)=>{
-    console.log(err)
-})
+// orderModal.create({
+//     userId:'642cf4ba0937e1ef085969ee',list:[{productId:'6436984b1502de71bc95272b',quantity:2}]
+// })
+// .then((data)=>{
+//     console.log(data)
+// })
+// .catch((err)=>{
+//     console.log(err)
+// })
 
 // orderModal.
 //   findOne()

@@ -36,7 +36,7 @@ function Infoproduct() {
       </Container>
         <Container className='container_list'>
         <Row className="infroproduct">
-        <Col lg={5} className=''>
+        <Col lg={5}  className=''>
         <Magnifier src={yourImage}/>
         </Col>
         <Col lg={4}>
