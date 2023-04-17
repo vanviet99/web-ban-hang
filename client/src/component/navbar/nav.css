@@ -11,3 +11,19 @@
     color: white;
     padding-left: 10px;
 }
+.cart_quantyti{
+   position: relative;
+}
+.cart_quantyti span{
+   position: absolute;
+   top: 0;
+   font-size: 15px;
+   border: 1px solid white;
+   right: -10;
+   padding: 0px 4px;
+   border-radius: 50%;
+}
+.me-2{
+   background-color: unset !important;
+   border: unset !important;
+}

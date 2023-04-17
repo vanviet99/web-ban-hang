@@ -17,7 +17,15 @@ const userSchema = mongoose.Schema({
     admin:{
         type:Boolean,
         default:false,
-    }
+    },
+    listlike : [
+        { 
+            productId : {
+                type: String,
+                ref: "product"
+            }
+        }
+    ]
 },{collection:'user'})
 
 const userModal = mongoose.model("user",userSchema)

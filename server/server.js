@@ -7,6 +7,10 @@ const dotenv = require("dotenv")
 const authrroter = require("./routers/auth")
 const userrouter = require("./routers/user")
 const cartrouter = require("./routers/cart")
+const productrouter = require("./routers/product")
+const orderrouter = require("./routers/order")
+
+
 dotenv.config()
 app.use(cors())
 app.use(cookieParser())
@@ -15,6 +19,9 @@ app.use(bodyParser.json())
 app.use("/v1/auth/", authrroter)
 app.use("/v1/user/", userrouter)
 app.use("/v1/cart/",cartrouter)
+app.use("/v1/product/", productrouter)
+app.use("/v1/order/", orderrouter)
+
 app.listen(8000,()=>{
   console.log("server is running")
 })

@@ -1,0 +1,119 @@
+#dropdown-basic{
+    background-color: #fbfbfb !important;
+    border-radius: unset !important;
+    color: black;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 -1.4em 1em 0 rgba(0,0,0,0.02);
+    width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#dropdown-basic:hover{
+    background-color: white !important;
+}
+.brandproduct__title{
+    padding: 8px;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brandproduct__title__left{
+    margin-left: 80px;
+}
+.brandproduct__title__right{
+    margin-right: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.brandproduct__title__right p, .brandproduct__title__left p{
+    margin: 0;
+}
+.brandproduct__title__right__select{
+    margin-left: 20px;
+}
+.brandproduct__title__left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brandproduct__title__left p{
+    margin: 0px 5px;
+    font-size: 18px;
+}
+.brandproduct__title__left_back{
+    color: rgba(102,102,102,0.7);
+}
+.brandproduct__title__left_back__hover:hover{
+    cursor: pointer;
+    color: black;
+}
+
+
+/* content */
+.brandproduct__content{
+    max-width: 1400px;
+}
+.brandproduct__content__block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.brandproduct__content__left__listproduct__item:hover{
+    background-color: #fafafa;
+    cursor: pointer;
+}
+.brandproduct__content{
+    background-color: #fff;
+    padding-top: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.brandproduct__content__left{
+    width: 33.33%;
+    background-color: #fff;
+}
+.brandproduct__content__left h3{
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 450;
+    color: #222;
+    text-align: center;
+}
+.brandproduct__content__right{
+    width: 100%;
+}
+.brandproduct__content__left__listproduct__item__img{
+    width: 60px ;
+    height: 60px;
+}
+.brandproduct__content__left__listproduct__item__img img{
+    width: 100%;
+}
+.brandproduct__content__left__listproduct__item__desc p{
+    margin: 0;
+    color: #464646;
+    font-size: 16px;
+}
+.brandproduct__content__left__listproduct__item__desc{
+    margin-left: 10px;
+}
+.brandproduct__content__left__listproduct__item{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 4px;
+    margin: 0px 20px;
+    border-bottom: 1px solid #ececec;
+}
+
+.brandproduct__content__left__listproduct__item__desc span{
+    color:#f4516c ;
+    font-weight: bold;
+}
+
+
+

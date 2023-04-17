@@ -21,6 +21,10 @@ const orderSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    status: {
+        type:String,
+        default: "panding"
+    }
 },{collection:'order'})
 
 const orderModal = mongoose.model("order",orderSchema)
