@@ -1,0 +1,20 @@
+
+.footer{
+   background-color: rgb(29, 22, 22);
+   color: white;
+   margin-top: 50px;
+}
+.footer-heading{
+    margin-top: 10px;
+}
+.footer_flex{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.footer-li{
+    list-style: none;
+    margin-left: 10px;
+    font-size: 30px;
+}

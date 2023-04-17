@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useFormik} from 'formik'
 import * as Yup from "yup"
-import register from '../Register/register.css'
+import  '../Register/register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 function Login() {
@@ -41,16 +41,16 @@ function Login() {
             .then((data)=>{
                 localStorage.setItem('user',JSON.stringify(data.data))
                 console.log(data.data.admin)
+                console.log(data)
                 if(data.data.admin) {
                     nav('/admin')
                 }else{
                     nav('/')
                 }
-                
             })
             .catch((err)=>{
                     setErrr(err.response
-                        .data.message)
+                        .data)
             })
         }
     })

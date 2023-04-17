@@ -1,0 +1,58 @@
+/* <div className="comment">
+<div className="comment_totle">
+        <p> 3 Comment</p>
+</div>
+<div className="comment_add">
+    <input type="text" />
+    <button>Comment</button>
+</div>
+<Row>
+    <Col lg={3}>
+        <p>Hà Linh</p>
+    </Col>
+    <Col lg={9}>
+        Hàng chất lượng
+    </Col>
+</Row>
+<Row>
+    <Col lg={3}>
+        <p>Hà Linh</p>
+    </Col>
+    <Col lg={9}>
+        Hàng chất lượng
+    </Col>
+</Row>
+<Row>
+    <Col lg={3}>
+        <p>Hà Linh</p>
+    </Col>
+    <Col lg={9}>
+        Hàng chất lượng
+    </Col>
+</Row>
+</div> */
+.comment{
+    margin-top: 20px;
+}
+.comment_totle p{
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+.comment_add input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+.comment_add button{
+    float: right;
+    margin-top: 10px;
+}
+.comment_add input:focus .comment_btn {
+    background-color: red !important;
+}
+.comment-comment{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}

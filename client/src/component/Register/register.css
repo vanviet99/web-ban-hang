@@ -1,13 +1,14 @@
 .infoform{
     margin: 0 auto;
     width: 500px;
-    background-color: rgb(66, 68, 68);
+    /* background-color: rgb(66, 68, 68); */
     padding: 10px;
     margin-top: 30px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 5px;
 }
 .form_one{
     position: relative;
@@ -16,7 +17,7 @@
 display: block;
 text-align: left;
 margin-bottom: 15px;
-color: white;
+color: black;
 margin-top: 15px;
 }
 
@@ -28,6 +29,7 @@ margin-top: 15px;
     outline: none;
     padding-left: 10px;
     height: 40px;
+    background-color: #ccc;
 }
 .error{
     position: absolute;
@@ -55,7 +57,7 @@ margin-top: 15px;
 }
 
 .linhchocho{
-    color: wheat;
+    color: rgb(226, 156, 27);
     margin-top: 5px;
 }
 .linhcho{

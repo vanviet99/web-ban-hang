@@ -1,0 +1,31 @@
+.progress{
+    width: 100%;
+    margin-top: 5px;
+}
+.evaluate{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.evaluate_left{
+text-transform: uppercase;
+font-size: 20px;
+}
+.evaluate_center{
+    font-size: 20px;
+}
+.evaluate_icon{
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+.evaluate_list{
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.btn_evaluate{
+    width: 20% !important;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.evl{
+    border-bottom: 1px solid #ccc;
+}
