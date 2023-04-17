@@ -20,6 +20,10 @@
    font-size: 15px;
    border: 1px solid white;
    right: -10;
-   padding: 1px 1px;
+   padding: 0px 4px;
    border-radius: 50%;
+}
+.me-2{
+   background-color: unset !important;
+   border: unset !important;
 }

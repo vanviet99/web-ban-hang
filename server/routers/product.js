@@ -11,6 +11,7 @@ router.patch("/updaterate",middlewreController.verifyToken, productController.up
 router.patch("/updatelike",middlewreController.verifyToken, productController.updatelike)
 router.get("/findbyname", productController.findbyname)
 router.get("/findbybrand", productController.findbybrand)
-router.get("/findbyID", productController.findbyID)
+router.get("/findbyID", productController.findbyID),
+router.get("/comment", productController.updateComment)
 
 module.exports = router

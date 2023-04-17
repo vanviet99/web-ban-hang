@@ -20,7 +20,20 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    rate: []
+    rate: [],
+    comment: [
+        {
+            userId: {
+                type: String,
+                ref: "user"
+            },
+            cmt: String,
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ]
 },{collection:'product'})
 
 const productModal = mongoose.model("product",productSchema)
