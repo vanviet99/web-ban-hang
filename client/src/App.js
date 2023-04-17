@@ -2,6 +2,7 @@ import './App.css';
 import Register from './component/Register/Register';
 import Login from './component/Login/Login';
 import Admin from './component/Admin/Admin';
+import Infoproduct from './component/infoProduct/Infoproduct';
 import {
   BrowserRouter,
   Routes, Route 
@@ -14,6 +15,7 @@ function App() {
     <Route path='/register' element={<Register></Register>}></Route>
     <Route path='/login' element={<Login></Login>}></Route>
     <Route path='/' element={<Home></Home>}></Route>
+    <Route path='/:id' element={<Infoproduct></Infoproduct>}></Route>
     <Route path='/admin' element={<Admin></Admin>}></Route>
    </Routes>
    </BrowserRouter>
