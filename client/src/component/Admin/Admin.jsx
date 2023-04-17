@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom'
-
+import Navadmin from './navadmin/Navadmin'
+import Headeradmin from './Headeradmin/Headeradmin';
 function Admin() {
     const nav = useNavigate()
     useEffect(() => {
@@ -12,7 +16,16 @@ function Admin() {
      
     }, [])
   return (
-    <div>Admin</div>
+    <Container fluid> 
+    <Headeradmin></Headeradmin>
+      <Row>
+        <Col lg={3}>
+          <Navadmin></Navadmin>
+        </Col>
+        <Col lg={9}>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

@@ -1,0 +1,205 @@
+.navadmin_header-icon{
+    float: right;
+    position: relative;
+}
+.headeradmin{
+    padding: 10px 0px;
+}
+.headeradmin{
+    animation: gradient 15s ease infinite;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+.navadmin_icon{
+    font-size: 30px;
+}
+.navadmin_header-icon span{
+    position: absolute;
+    top: -6px;
+    right: 10px;
+}
+.navadmin_header-icon{
+   padding-right: 10px;
+}
+
+
+.content {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 160px;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    font-size: 35px;
+    line-height: 40px;
+    color: rgb(239, 174, 174);
+  }
+  .content__container {
+    font-weight: 600;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 40px;
+  }
+  .content__container:before {
+    content: "[";
+    left: 0;
+  }
+  .content__container:after {
+    content: "]";
+    position: absolute;
+    right: 0;
+  }
+  .content__container:after, .content__container:before {
+    position: absolute;
+    top: 0;
+    color: #3ff07a;
+    font-size: 42px;
+    line-height: 40px;
+    -webkit-animation-name: opacity;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: opacity;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .content__container__text {
+    display: inline;
+    float: left;
+    margin: 0;
+  }
+  .content__container__list {
+    margin-top: 0;
+    padding-left: 110px;
+    text-align: left;
+    list-style: none;
+    -webkit-animation-name: change;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: change;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  .content__container__list__item {
+    line-height: 40px;
+    margin: 0;
+  }
+  
+  @-webkit-keyframes opacity {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes change {
+    0%, 12.66%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    16.66%, 29.32% {
+      transform: translate3d(0, -25%, 0);
+    }
+    33.32%, 45.98% {
+      transform: translate3d(0, -50%, 0);
+    }
+    49.98%, 62.64% {
+      transform: translate3d(0, -75%, 0);
+    }
+    66.64%, 79.3% {
+      transform: translate3d(0, -50%, 0);
+    }
+    83.3%, 95.96% {
+      transform: translate3d(0, -25%, 0);
+    }
+  }
+  @keyframes opacity {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes change {
+    0%, 12.66%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    16.66%, 29.32% {
+      transform: translate3d(0, -25%, 0);
+    }
+    33.32%, 45.98% {
+      transform: translate3d(0, -50%, 0);
+    }
+    49.98%, 62.64% {
+      transform: translate3d(0, -75%, 0);
+    }
+    66.64%, 79.3% {
+      transform: translate3d(0, -50%, 0);
+    }
+    83.3%, 95.96% {
+      transform: translate3d(0, -25%, 0);
+    }
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --gold: #ffb338;
+    --light-shadow: #77571d;
+    --dark-shadow: #3e2904;
+  }
+  body {
+    margin: 0;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-areas: 'overlap';
+    place-content: center;
+    text-transform: uppercase;
+height: 100%;
+  }
+  .wrapper > div {
+    background-clip: text;  
+    -webkit-background-clip: text;
+    color: #363833;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    /* font-size: clamp( 3em, 18vw, 15rem); */
+    font-size:40px;
+    grid-area: overlap;
+    letter-spacing: 1px;
+    -webkit-text-stroke: 4px transparent;
+  }
+  div.bg {
+    background-image: repeating-linear-gradient( 105deg, 
+      var(--gold) 0% , 
+      var(--dark-shadow) 5%,
+      var(--gold) 12%);
+    color: transparent;
+    filter: drop-shadow(5px 15px 15px black);
+    transform: scaleY(1.05);
+    transform-origin: top;
+  }
+  div.fg{
+    background-image: repeating-linear-gradient( 5deg,  
+      var(--gold) 0% , 
+      var(--light-shadow) 23%, 
+      var(--gold) 31%);
+    color: #1e2127;
+    transform: scale(1);
+  }
