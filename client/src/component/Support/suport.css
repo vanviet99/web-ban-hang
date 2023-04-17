@@ -1,0 +1,60 @@
+/* <Col className='support_list'>
+<div className="support_icon">
+    <AiFillCar></AiFillCar>
+</div>
+<div className="support_title">
+    <div className="support_title-heading">Miễn phí giao hàng</div>
+    <div className="support_title-title">Nhận hàng trong vòng 3 ngày</div>
+</div>
+</Col> */
+
+
+.support_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #ccc;
+}
+.support_list:first-child{
+    border-left: 1px solid #ccc;
+}
+.support_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    flex-direction: column;
+    position: relative;
+}
+.support_icon{
+    font-size: 40px;
+    margin-right: 20px;
+    animation: colorr 2s ease infinite;
+}
+.support_title-heading{
+    font-size: 20px;
+    font-weight: 500;
+}
+.support_span{
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -10px;
+    background-color: #e66161;
+    visibility: hidden;
+    transition: ease 2s;
+}
+.support_title:hover .support_span {
+    visibility: visible;
+    width: 100%;
+}
+.support{
+    margin-bottom: 30px;
+}
+.mt50{
+    margin-top: 50px;
+}
+@keyframes colorr {
+    0% { color: #f8320a; }
+    50% { color: #47a547; }
+    100% { color: #F8CD0A; }
+    }

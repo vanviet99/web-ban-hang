@@ -1,0 +1,9 @@
+.description_heading{
+    margin-top: 20px;
+    text-align: center;
+  }
+  .description-title{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0px;
+  }

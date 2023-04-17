@@ -1,5 +1,4 @@
 const userModal = require("../modal/userModal")
-const user = require("../modal/userModal")
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken')
 // accesstoken
@@ -11,7 +10,7 @@ const authController = {
             try {
                 const salt = await bcrypt.genSalt(10)
                 const password = await bcrypt.hash(req.body.password,salt)
-                let newusser = await user.create({
+                let newusser = await userModal.create({
                     username : req.body.username,
                     password: password
                 })
@@ -26,7 +25,7 @@ const authController = {
             admin:user.admin
         },
        'vanviet',
-        {expiresIn: "30s"}
+        {expiresIn: "30d"}
         )
     },
     getrefreshTokon: (user) =>{
@@ -66,7 +65,6 @@ const authController = {
                 res.status(200).json({message:'login thanh cong',...others,accesstoken})
             }
         } catch (error) {
-
             res.status(500).json({message:'Login khong thanh cong',error},)
         }
     },

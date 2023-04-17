@@ -4,6 +4,7 @@
     width: 30px;
     height: 30px;
     display: block !important;
+    display: none;
 }
 .slick-next{
   position: absolute;
@@ -11,13 +12,14 @@
   width: 30px;
   height: 30px;
   display: none !important;
+  display: none;
 }
 .slick-slider{
     position: relative;
     cursor: pointer;
 }
 .slick-slider:hover .slick-next,.slick-prev{
-        display: block !important;
+        display: none !important;
 }
 
 .slick-next:hover{
