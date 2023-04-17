@@ -6,7 +6,8 @@ import { AiOutlineShoppingCart ,AiOutlineStar} from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
 import './product.css'
 import { Pagination } from 'antd';
-function Product() {
+function Product(props) {
+    let brand  = props.brand
   return (
    <Container>
     <Row>
@@ -18,6 +19,7 @@ function Product() {
         <Col className='product' lg={3}>
             <div className="product_img">
                     <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
+                    <div className="btnsale">-15%</div>
                     <div className="product_cart">
                         <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
                         <BsFillHeartFill className='heart'></BsFillHeartFill>
@@ -316,7 +318,8 @@ function Product() {
             </div>
         </Col>  
     </Row>
-    <Pagination defaultCurrent={1} total={50} className='pagini' />
+    {!brand? <Pagination defaultCurrent={1} total={50} className='pagini' />: <div className='showmore__block'><button className='showmore' variant="light">Show More</button></div>}
+    
    </Container>
    
   )
