@@ -9,8 +9,8 @@ function Headeradmin() {
     <Row className='headeradmin'>
         <Col lg={3}>
         <div class="wrapper">
-  <div class="bg"> VT Shop </div>
-  <div class="fg">  VT Shop  </div>
+      <div class="bg"> VT Shop </div>
+      <div class="fg">  VT Shop  </div>
 </div>
         </Col>
         <Col lg={2}>

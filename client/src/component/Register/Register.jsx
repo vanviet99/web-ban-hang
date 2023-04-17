@@ -34,8 +34,11 @@ function Register() {
     })
 
   return (
-    <div>
-        <header className='header'>Register</header>
+    <div className='header_body'>
+         <header className='header'> <div class="wrapper header">
+      <div class="bg"> Resgister</div>
+      <div class="fg">  Resgister  </div>
+</div></header>
         <section>
             <form className='infoform' onSubmit={formik.handleSubmit}>
                <div className="form_one">
