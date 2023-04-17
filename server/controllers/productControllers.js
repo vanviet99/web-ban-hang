@@ -61,9 +61,25 @@ const productController = {
     },
     findbybrand: async(req, res) =>{
         try {
-            const { page, pagesize} = req.body
-            let data= await Product.find({brand : req.body.brand}).skip((page - 1) * pagesize).limit(pagesize)
-            res.status(200).json(data)
+            const {  arrangement} = req.body
+            if(!arrangement){
+                let data= await Product.find({brand : req.body.brand})
+                res.status(200).json(data)
+            }else{
+                if(arrangement == "dec"){
+                    let data= await Product.find({brand : req.body.brand})
+                    data = data.sort(function(a,b){
+                        return a- b
+                    })
+                    res.status(200).json(data)
+                }else{
+                    let data= await Product.find({brand : req.body.brand})
+                    data = data.sort(function(a,b){
+                        return b - a
+                    })
+                    res.status(200).json(data)
+                }
+            }
         } catch (error) {
             res.status(500).json("Something went wrong");
         }
@@ -98,7 +114,19 @@ const productController = {
         } catch (error) {
             res.status(500).json("Something went wrong");
         }
+    },
+    updateComment: async(req, res) =>{
+        try {
+            let product = await Product.find({_id: req.body.productId})
+            let newcmt  = [...product.comment, req.body.cmt]
+            let update = await Product.updateOne({_id: req.body.productId}, {comment: newcmt})
+            let data = await Product.find({_id: req.body.productId}).populate("comment.userId")
+            req.status(200).json(data)
+        } catch (error) {
+            res.status(500).json("Something went wrong");
+        }
     }
+
 
 }
 module.exports = productController

@@ -49,6 +49,23 @@ const userController = {
         } catch (error) {
             res.status(500).json(error)
         }
+    },
+    getbuyID : async(req, res) =>{
+        try {
+            let data = await user.find({_id: req.body.userId})
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+    getbuyname: async(req, res) =>{
+        try {
+            let data = await user.find()
+            data = data.filter(value => value.include(req.body.username))   
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json(error)
+        }
     }
 }
 
