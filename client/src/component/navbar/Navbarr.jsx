@@ -1,4 +1,4 @@
-import Container from 'react-bootstrap/Container';
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom'
@@ -19,6 +19,10 @@ function Navbarr() {
 
   return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
+        <Navbar.Brand > <div class="wrapper">
+      <div class="bg"> VT Shop </div>
+      <div class="fg">  VT Shop  </div>
+</div></Navbar.Brand>
         <Navbar.Brand ><input type="search" placeholder='Search by name product' className='nav_search'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

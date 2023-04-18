@@ -15,7 +15,7 @@ export default class PauseOnHover extends Component {
       pauseOnHover: true
     };
     return (
-      <div>
+      <div className="slickjs">
         <Slider {...settings}>
           <div>
            <img src="https://tuixach.giaodienwebmau.com.vn/wp-content/uploads/2020/09/slideshow_2-1.jpg" alt="" />
