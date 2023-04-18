@@ -25,7 +25,7 @@ function Navbarr() {
 
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='test' fixed="top" >
                       <Myinfo></Myinfo>
-        <Container>
+        <Container className='th'>
           <Navbar.Brand ><input type="search" placeholder='Search by name product' className='nav_search' /></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

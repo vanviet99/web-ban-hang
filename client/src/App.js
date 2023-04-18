@@ -3,6 +3,7 @@ import Register from './component/Register/Register';
 import Login from './component/Login/Login';
 import Admin from './component/Admin/Admin';
 import Infoproduct from './component/infoProduct/Infoproduct';
+import Useradmin from './component/Admin/Useradmin/Useradmin';
 import {
   BrowserRouter,
   Routes, Route 

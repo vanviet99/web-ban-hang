@@ -35,3 +35,8 @@
    flex-direction: column;
    margin: 0px !important;
 }
+.th{
+   background-color: #212529;
+   margin: 0 !important;
+   padding-bottom: 10px  !important;
+}
