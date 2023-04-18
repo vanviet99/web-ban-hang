@@ -15,7 +15,7 @@ function Home() {
       <Support></Support>
       <Product></Product>
       <Trademark></Trademark>
-     
+
       <Footer></Footer>
       <div className='home_top'>
       <a href='#' className='home-top-animation'><BsFillArrowUpCircleFill></BsFillArrowUpCircleFill></a>

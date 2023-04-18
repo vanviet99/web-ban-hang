@@ -20,7 +20,6 @@ function App() {
     <Route path='/:id' element={<Infoproduct></Infoproduct>}></Route>
     <Route path='/brand/:brand' element={<BrandProduct></BrandProduct>}></Route>
     <Route path='/admin' element={<Admin></Admin>}>
-    <Route path="user" element={<Useradmin></Useradmin>} />
     </Route>
    </Routes>
    </BrowserRouter>

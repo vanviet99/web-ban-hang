@@ -4,6 +4,7 @@ import * as Yup from "yup"
 import  '../Register/register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../Admin/button.css'
 function Login() {
     const nav = useNavigate()
     const [errr,setErrr] = useState('')
@@ -65,7 +66,13 @@ function Login() {
                     )}
                </div>
                <div className="form_btn">
-                <button type='submit' className='btn-buttonn'>Login</button>
+               <button class="animated-button1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                 Submit Login
+            </button>
                 <p className='linhchocho'>Bạn chưa có tài khoản <Link to='/register' className='linhcho'>register</Link></p>
                 </div>
             </form>

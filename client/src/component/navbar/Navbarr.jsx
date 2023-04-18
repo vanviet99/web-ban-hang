@@ -19,7 +19,6 @@ function Navbarr() {
 
   return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
-      <Container>
         <Navbar.Brand ><input type="search" placeholder='Search by name product' className='nav_search'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -38,8 +37,6 @@ function Navbarr() {
         {[ 'end'].map((placement, idx) => (
         <OffCanvasExample key={idx} placement={placement} name={<Navbar.Brand className='cart_quantyti'> <BsCartCheck></BsCartCheck><span className='amount__cart'>0</span></Navbar.Brand>} />
       ))}
-        
-      </Container>
     </Navbar>
   );
 }
