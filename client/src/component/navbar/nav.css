@@ -23,10 +23,15 @@
    padding: 0px 4px;
    border-radius: 50%;
 }
-<<<<<<< HEAD
-=======
 .me-2{
    background-color: unset !important;
    border: unset !important;
 }
->>>>>>> 860e72d08ed666dc6d5632460de0f60bec6d6bcb
+.test{
+   padding: 0px 0px 10px 0px  !important;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-direction: column;
+   margin: 0px !important;
+}

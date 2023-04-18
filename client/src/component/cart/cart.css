@@ -1,0 +1,11 @@
+.test{
+    margin-top: 100px;
+}
+
+.Cart__content{
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: rgb(10, 255, 255);
+    margin-top: 130px;
+    height: 500px;
+}
