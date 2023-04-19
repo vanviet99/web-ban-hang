@@ -5,7 +5,7 @@ import './adminchart.css'
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'], 
   datasets: [
     {
       label: 'Quantyti',
@@ -32,7 +32,9 @@ export const data = {
 };
 
 export function AdminChart() {
-  return <Pie data={data}  className='adminchart'/>;
+  return  <div className="adminchart">
+  <Pie data={data} />;
+</div>
 }
 
 export default AdminChart
