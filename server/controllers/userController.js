@@ -61,12 +61,18 @@ const userController = {
     getbuyname: async(req, res) =>{
         try {
             let data = await user.find()
-            data = data.filter(value => value.include(req.body.username))   
-            res.status(200).json(data)
+            var title = req.query.searchbyname;
+            console.log(data);
+            var dataa = data.filter(function(item,index){
+                return item.username.toLowerCase().indexOf(title.toLowerCase()) !== -1
+            });
+            console.log(dataa)
+         
+            res.status(200).json(dataa)
         } catch (error) {
             res.status(500).json(error)
         }
-    }
+    },
 }
 
 module.exports = userController
