@@ -40,7 +40,7 @@ function Navbarr() {
               <Link className='nav_link' ><Nav.Link eventKey="link-4" >VÍ Da</Nav.Link></Link>
             </Nav>
           </Navbar.Collapse>
-          <Navbar.Brand>{userr ? <div>{userr}<a href='' className='nav_link white' onClick={() => logout()}>Logout</a></div> : <div><BsFillFilePersonFill></BsFillFilePersonFill><Link to='login' className='nav_link white'>Đăng Nhập</Link></div>}</Navbar.Brand>
+          <Navbar.Brand>{userr ? <div>{userr}<a href='' className='nav_link white' onClick={() => logout()}>Logout</a></div> : <div><BsFillFilePersonFill></BsFillFilePersonFill><Link to='/login' className='nav_link white'>Đăng Nhập</Link></div>}</Navbar.Brand>
           {['end'].map((placement, idx) => (
             <OffCanvasExample key={idx} placement={placement} name={<Navbar.Brand className='cart_quantyti'> <BsCartCheck></BsCartCheck><span className='amount__cart'>0</span></Navbar.Brand>} />
           ))}

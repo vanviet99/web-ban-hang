@@ -4,7 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import './command.css'
-function Command() {
+import axios from 'axios';
+function Command(props) {
     const [btncolor,setBtncolor] = useState(false)
     const [colorr,setColorr] =useState('')
     function keycomment(){
@@ -12,6 +13,19 @@ function Command() {
             if(colorr.length ==''){
                 setBtncolor(false)
             }
+    }
+    const productId = props.productId
+    const userdata = JSON.parse(window.localStorage.getItem("user"))
+    const handlecomment = ()=>{
+        let cmt  = document.querySelector(".avsadsad").value
+        axios.post("http://localhost:8000/v1/product/comment", {productId:productId, username:userdata.username, cmt:cmt})
+        .then(value=>{
+            console.log(value);
+        })
+        .catch(value=>{
+            console.log(value);
+        })
+        console.log( userdata.username , cmt , productId);
     }
    
   return (
@@ -26,7 +40,7 @@ function Command() {
             <Col lg={9}>
             <div className="comment_add">
                 <input type="text" placeholder='Add a Comment' onChange={(e)=>setColorr(e.target.value)} className='avsadsad' value={colorr} onKeyDown={()=>keycomment()}/>
-              {btncolor ?   <Button className='comment_btn'>Comment</Button>: <Button variant="secondary">Comment</Button>}
+              {btncolor ?   <Button className='comment_btn' onClick={handlecomment}>Comment</Button>: <Button variant="secondary">Comment</Button>}
             </div>
             </Col>
            </Row>

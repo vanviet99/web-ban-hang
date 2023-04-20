@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PauseOnHover from '../Slick/PauseOnHover'
 import Navbarr from '../navbar/Navbarr'
 import './home.css'
@@ -7,13 +7,24 @@ import Product from '../Product/Product'
 import Trademark from '../Rrademark/Trademark'
 import Footer from '../footer/Footer'
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import axios from 'axios'
 function Home() {
+  const [listProduct, setListProduct] = useState([])
+  useEffect(()=>{
+    axios.get("http://localhost:8000/v1/product/getall")
+    .then(value=>{
+      setListProduct(value.data)
+    })
+    .catch(value=>{
+      console.log(value);
+    })
+  }, [])
   return (
     <div className='home'>
       <Navbarr></Navbarr>
       <PauseOnHover></PauseOnHover>
       <Support></Support>
-      <Product></Product>
+      <Product listproduct={listProduct}></Product>
       <Trademark></Trademark>
 
       <Footer></Footer>

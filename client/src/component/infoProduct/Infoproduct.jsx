@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbarr from '../navbar/Navbarr'
 import Footer from '../footer/Footer'
-import { Link} from 'react-router-dom'
+import { Link, useParams} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,10 +12,11 @@ import Description from '../Description/Description';
 import './infoproduct.css'
 import Command from '../Command/Command';
 import Magnifier from "react-magnifier";
+import axios from 'axios';
 
 function Infoproduct() {
    const [yourImage,setYourImage] = useState("https://tuixach.giaodienwebmau.com.vn/wp-content/uploads/2020/09/kgp6hvho_large-1.jpg")
-
+  const [dataProduct, setdataProduct] = useState({})
 //   .magnifier {
 //     /* Styles for <div> around image and magnifying glass */
 //   }
@@ -24,7 +25,20 @@ function Infoproduct() {
 //   }
 //   .magnifying-glass {
 //     /* Styles for magnifying glass */
-//   }
+//   }\
+let IDproduct = useParams().id
+let user = JSON.parse(window.localStorage.getItem("user"))
+useEffect(()=>{
+
+  axios.get(`http://localhost:8000/v1/product/findbyID/${IDproduct}` )
+  .then(value=>{
+    setdataProduct(value.data[0])
+    console.log(value);
+  })
+  .catch(value=>{
+    console.log(value)
+  })
+},[])
 
   return (
     <div>
@@ -37,16 +51,16 @@ function Infoproduct() {
         <Container className='container_list'>
         <Row className="infroproduct">
         <Col lg={5}  className=''>
-        <Magnifier src={yourImage}/>
+        <Magnifier src={dataProduct.thumb}/>
         </Col>
         <Col lg={4}>
         <div className="list_danhmuc">
-            <p>Danh Mục: <Link to='/' className='list_danhmuc-link'>Túi Sách</Link></p>
+            <p>Danh Mục: <Link to='/' className='list_danhmuc-link'>{dataProduct.brand}</Link></p>
           </div>
           <div className="list_title">
-            <h3>Túi Shoulder Bag móc treo rua rua DFJL</h3>
+            <h3>{dataProduct.name}</h3>
             <div className="list_title-price">
-            359.000 ₫
+           {dataProduct.price?.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}
             </div>
             <div className="list_btn">
             <div className="list_btn-left">
@@ -60,7 +74,7 @@ function Infoproduct() {
           </div>
           <div className="list_thanhtien">
             <p>Thành Tiền :</p>
-            <span> 359.000 ₫</span>
+            <span> {dataProduct.price?.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</span>
           </div>
           <div className="list_btn-have">
             <button className='btn_have'>MUA NGAY<br></br><span>Gọi Điện và xác nhận giao hàng tận nơi</span></button>
@@ -108,9 +122,9 @@ function Infoproduct() {
         </Col>
         </Row>
         </Container>
-       <Description></Description>
+       <Description data={dataProduct.description}></Description>
        <Evaluate></Evaluate>
-       <Command></Command>
+       <Command productId={IDproduct} ></Command>
         <Footer></Footer>
     </div>
   )
