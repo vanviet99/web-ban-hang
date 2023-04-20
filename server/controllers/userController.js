@@ -60,13 +60,33 @@ const userController = {
     },
     getbuyname: async(req, res) =>{
         try {
+            console.log(123)
             let data = await user.find()
-            data = data.filter(value => value.include(req.body.username))   
-            res.status(200).json(data)
+            var title = req.query.searchbyname;
+            var dataa = data.filter(function(item){
+                return item.username.toLowerCase().indexOf(title.toLowerCase()) !== -1
+            });
+         
+            res.status(200).json(dataa)
         } catch (error) {
             res.status(500).json(error)
         }
-    }
+    },
+    paginiuser: async(req, res) =>{
+        try {
+            const pageOptions = {
+                page: parseInt(req.query.page, 10) || 1,
+                limit: parseInt(req.query.limit, 5) || 5
+            }
+         const data = await user.find()
+                .skip((pageOptions.page -1) * pageOptions.limit)
+                .limit(pageOptions.limit)
+                res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json(error)
+        }   
+    },
+    
 }
 
 module.exports = userController

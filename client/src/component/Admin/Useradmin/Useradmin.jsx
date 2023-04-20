@@ -1,7 +1,60 @@
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './useradmin.css'
-function Useradmin() {
+import axios from 'axios';
+import { useState ,useEffect} from 'react';
+import { Pagination } from 'antd';
+function Useradmin(props) {
+  let Adatausser = props.userdata
+  const [datauser,setDatauser] = useState([])
+  const [dai,setDai]= useState()
+  const [page, setPage] = useState(1)
+  useEffect(() => {
+    axios.get('http://localhost:8000/v1/user')
+    .then(data =>{
+        setDai(data.data.length)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+    axios.get(`http://localhost:8000/v1/user/paginiuser?page=${page} limit=5`)
+    .then(data =>{
+      setDatauser(data.data)
+        console.log(data.data)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+}, [Adatausser])
+function onkeypagi(a,b,c){
+  setPage(a)
+  axios.get(`http://localhost:8000/v1/user/paginiuser?page=${a} limit=${b}`)
+  .then(data =>{
+    setDatauser(data.data)
+      console.log(data.data)
+  })
+  .catch(err =>{
+      console.log(err)
+  })
+}
+
+axios.get('http://localhost:8000/v1/user')
+.then(data =>{
+    setDai(data.data.length)
+})
+.catch(err =>{
+    console.log(err)
+})
+axios.get('http://localhost:8000/v1/user/')
+.then(data =>{
+    setDai(data.data.length)
+})
+.catch(err =>{
+    console.log(err)
+})
+  
+
+
   return (
    <div className="useradmin_table">
     <div class="box">
@@ -15,30 +68,24 @@ function Useradmin() {
         <tr>
           <th>#</th>
           <th>Username</th>
-          <th>Password</th>
           <th className='text-center'>Acction</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td className='table_td-acction'> <Button variant="warning">Edit</Button>
-          <Button variant="dark">Delete</Button>
-          </td>
-          
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
+        {Adatausser.length >0 ? Adatausser: datauser.map(function(value,index){
+          return(
+            <tr key={value._id}>
+          <td>{index+1}</td>
+          <td>{value.username}</td>
           <td className='table_td-acction'> <Button variant="warning">Edit</Button>
           <Button variant="dark">Delete</Button>
           </td>
         </tr>
+          )
+        })}
       </tbody>
     </Table>
+    <Pagination defaultCurrent={1} total={dai*2} className='pagini_admin'  onChange={onkeypagi}/>
    </div>
   );
 }
