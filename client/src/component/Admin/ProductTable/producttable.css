@@ -1,15 +1,13 @@
 .table_td-acction{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    text-align: center;
 }
+.pagini_admin{
+    text-align: left;
+   padding-top: 30px;
+  }
 
-.useradmin-table{
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
-    border-radius: 5px;
-}
 
-.container-4 {
+  .container-4 {
     overflow: hidden;
     width: 300px;
     vertical-align: middle;

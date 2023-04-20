@@ -3,7 +3,14 @@ import Button from 'react-bootstrap/Button';
 import './useradmin.css'
 function Useradmin() {
   return (
-    <Table striped bordered hover size="sm" className='useradmin-table'>
+   <div className="useradmin_table">
+    <div class="box">
+  <div class="container-4">
+      <input type="search" id="search" placeholder="Search by name" />
+    	<button class="icon"><i class="fa fa-search"></i></button>
+  </div>
+  </div>
+     <Table striped bordered hover size="sm" className='useradmin-table'>
       <thead>
         <tr>
           <th>#</th>
@@ -32,6 +39,7 @@ function Useradmin() {
         </tr>
       </tbody>
     </Table>
+   </div>
   );
 }
 
