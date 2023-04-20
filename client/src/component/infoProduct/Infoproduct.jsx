@@ -27,19 +27,17 @@ function Infoproduct() {
 //     /* Styles for magnifying glass */
 //   }\
 let IDproduct = useParams().id
-let user = JSON.parse(window.localStorage.getItem("user"))
 useEffect(()=>{
 
   axios.get(`http://localhost:8000/v1/product/findbyID/${IDproduct}` )
   .then(value=>{
+    window.localStorage.setItem("listcomment", JSON.stringify(value.data[0].comment))
     setdataProduct(value.data[0])
-    console.log(value);
   })
   .catch(value=>{
     console.log(value)
   })
 },[])
-
   return (
     <div>
         <Navbarr></Navbarr>
@@ -123,7 +121,7 @@ useEffect(()=>{
         </Row>
         </Container>
        <Description data={dataProduct.description}></Description>
-       <Evaluate></Evaluate>
+       <Evaluate  productId={IDproduct} product={dataProduct}></Evaluate>
        <Command productId={IDproduct} ></Command>
         <Footer></Footer>
     </div>

@@ -88,7 +88,6 @@ const productController = {
     },
     findbyID : async(req, res) =>{
         try {
-            console.log(req.params.productId);
             let data = await Product.find({_id : req.params.productId})
             res.status(200).json(data)
         } catch (error) {
@@ -109,25 +108,25 @@ const productController = {
     },
     updateRate : async(req, res) =>{
         try {
-            const { page, pagesize} = req.body
             let product  = await Product.find({_id: req.body.productId})
-            let newRate  = [...product.rate, req.body.rate]
+            console.log(11111);
+            let newRate  = [...product[0].rate, req.body.rate]
+            console.log(123131321232222);
             let update = await Product.updateOne({_id: req.body.productId}, {rate: newRate})
-            let data = await Product.find().skip((page - 1) * pagesize).limit(pagesize)
+            let data = await Product.find({_id: req.body.productId})
             res.status(200).json(data)
         } catch (error) {
+            console.log(123131231);
             res.status(500).json("Something went wrong");
         }
     },
     updateComment: async(req, res) =>{
         try {
-            console.log(req.body.cmt);
             let product = await Product.find({_id: req.body.productId})
             let newcmt  = [...product[0].comment, {
-                username: req.body.userdata,
+                username: req.body.username,
                 cmt: req.body.cmt,
             }]
-            console.log(newcmt);
             let update = await Product.updateOne({_id: req.body.productId}, {comment: newcmt})
             let data = await Product.find({_id: req.body.productId})
             res.status(200).json(data[0])
