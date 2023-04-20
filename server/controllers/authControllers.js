@@ -14,7 +14,8 @@ const authController = {
                     username : req.body.username,
                     password: password
                 })
-                res.status(200).json({message:'sucsess',newusser})
+                const userdata = await userModal.find()
+                res.status(200).json({message:'sucsess',userdata})
             } catch (error) {
                 res.status(500).json({message:'Username da ton tai',error})
             }

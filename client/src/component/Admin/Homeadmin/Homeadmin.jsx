@@ -6,7 +6,6 @@ import { FaUser } from "react-icons/fa";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { FaProductHunt } from "react-icons/fa";
 import Useradmin from '../Useradmin/Useradmin';
-import { Pagination } from 'antd';
 import {useFormik} from 'formik'
 import * as Yup from "yup"
 import axios from 'axios';
@@ -14,6 +13,8 @@ import '../button.css'
 import './homeadmin.css'
 function Homeadmin() {
     const [errr,setErrr] = useState('')
+    const [userdata,setUserdata] =useState([]) 
+
     const formik =  useFormik({
         initialValues:{
         username :'',
@@ -28,11 +29,13 @@ function Homeadmin() {
                 username: value.username,
                 password: value.password
             })
-            .then((data)=>{
-
+            .then((dataa)=>{
+             setUserdata(dataa.data)
+             console.log(dataa.data)
+          
             })
-            .catch((err)=>{
-                    setErrr(err.response
+            .catch((errr)=>{
+                    setErrr(errr.response
                         .data.message)
             })
         }
@@ -78,11 +81,10 @@ function Homeadmin() {
         </Row>
         <Row className='homeadmin-wraper'>
             <Col lg={8}>
-            <Useradmin></Useradmin>
-            <Pagination defaultCurrent={1} total={50} className='pagini_admin' />
+            <Useradmin userdata={userdata}></Useradmin>
             </Col>
             <Col lg={4} className='homeadmin_form'>
-            <form className='form_homeadmn'>
+            <form className='form_homeadmn' onSubmit={formik.handleSubmit} >
             <div className="group">      
                     <input type='text' name='username' onChange={formik.handleChange} value={formik.values.username} className='input_homeadmin' required>
                 </input>

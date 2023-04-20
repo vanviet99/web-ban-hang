@@ -4,7 +4,7 @@ const middlewreController = {
     verifyToken:(req,res,next)=>{
         const token = req.headers.token
         if(token){
-            //Bearer
+            //Bearer    
             const accesstoken = token.split(" ")[1]
             jwt.verify(accesstoken,"vanviet",(err,user)=>{
                 if(err){
