@@ -1,5 +1,7 @@
 .myinfo{
     display: flex;
+    margin-bottom: 10px;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     padding: 8px;
@@ -11,16 +13,17 @@
     justify-content: center;
 }
 .myinfo__block__left p, .myinfo__block__right p{
-    color: white;
+    color: rgb(253 204 188);
     font-size: 13px;
      margin: 0px 10px;
 }
 .myinfo__block__left a {
     font-size: 13px;
-    color: white;
+    color: rgb(253 204 188);
     text-decoration: underline 0px;
     margin-left: 10px;
 }
 .myinfo__block__right div{
-    color: white;
+    color: rgb(253 204 188);
+    margin: 0px 10px 
 }

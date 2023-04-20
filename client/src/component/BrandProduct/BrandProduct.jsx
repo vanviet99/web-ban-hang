@@ -11,7 +11,6 @@ function BrandProduct() {
   let param = useParams().brand
   return (
     <div>
-      <Myinfo></Myinfo>
       <Navbarr></Navbarr>
       <div className="brandproduct__title">
         <div className="brandproduct__title__left">

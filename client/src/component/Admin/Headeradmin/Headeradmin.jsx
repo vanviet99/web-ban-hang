@@ -7,13 +7,13 @@ function Headeradmin() {
 
   return (
     <Row className='headeradmin'>
-        <Col lg={3}>
+        <Col lg={2}>
         <div class="wrapper">
-  <div class="bg"> VT Shop </div>
-  <div class="fg">  VT Shop  </div>
+      <div class="bg"> VT Shop </div>
+      <div class="fg">  VT Shop  </div>
 </div>
         </Col>
-        <Col lg={2}>
+        <Col lg={3}>
         <div className="content">
   <div className="content__container">
     <p className="content__container__text">

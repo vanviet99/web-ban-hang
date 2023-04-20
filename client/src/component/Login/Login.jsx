@@ -4,24 +4,8 @@ import * as Yup from "yup"
 import  '../Register/register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../Admin/button.css'
 function Login() {
-    // SignInComponent.js
-    // import { useCookies } from 'react-cookie'
-    
-    // const SignInComponent = () => {
-    
-    // // ...
-    // const [cookies, setCookie] = useCookies(['access_token', 'refresh_token'])
-    // async function onSubmit(values) {
-    //     const response = await getOauthResponse(values);
-    //     let expires = new Date()
-    //     expires.setTime(expires.getTime() + (response.data.expires_in * 1000))
-    //     setCookie('access_token', response.data.access_token, { path: '/',  expires})
-    //     setCookie('refresh_token', response.data.refresh_token, {path: '/', expires})
-    //     // ...
-    // }
-    // // next goes my sign-in form
-    // }
     const nav = useNavigate()
     const [errr,setErrr] = useState('')
     const formik =  useFormik({
@@ -56,8 +40,11 @@ function Login() {
     })
 
   return (
-    <div>
-        <header className='header'>Login</header>
+    <div className='header_body'>
+        <header className='header'> <div class="wrapper header">
+      <div class="bg"> Welcome to VT Shop </div>
+      <div class="fg">  Welcome to VT Shop  </div>
+</div></header>
         <section>
             <form className='infoform' onSubmit={formik.handleSubmit}>
                <div className="form_one">
@@ -79,7 +66,13 @@ function Login() {
                     )}
                </div>
                <div className="form_btn">
-                <button type='submit' className='btn-buttonn'>Login</button>
+               <button class="animated-button1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                 Submit Login
+            </button>
                 <p className='linhchocho'>Bạn chưa có tài khoản <Link to='/register' className='linhcho'>register</Link></p>
                 </div>
             </form>

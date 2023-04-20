@@ -6,8 +6,14 @@ import { AiOutlineShoppingCart ,AiOutlineStar} from "react-icons/ai";
 import { BsFillHeartFill } from "react-icons/bs";
 import './product.css'
 import { Pagination } from 'antd';
+import { useNavigate } from 'react-router-dom';
 function Product(props) {
     let brand  = props.brand
+    let listproduct = props.listproduct
+    const nav = useNavigate()
+    const handleclick = (ID)=>{
+        nav(`/${ID}`)
+    }
   return (
    <Container>
     <Row>
@@ -16,307 +22,38 @@ function Product(props) {
                 <h2>Product</h2>
                 <span className='aaaa'></span>
             </div>
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="btnsale">-15%</div>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
+            {listproduct.map(value=>{
+                return (
+                    <Col onClick={()=>{handleclick(value._id)}} className='product' lg={3}>
+                    <div className="product_img">
+                            <img src={value.thumb}className='product_img-img'></img>
+                            <div className="btnsale">-{value.sale}%</div>
+                            <div className="product_cart">
+                                <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
+                                <BsFillHeartFill className='heart'></BsFillHeartFill>
+                            </div>
                     </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
+                    <div className="product_title">
+                        <div className="product_title-heading">
+                            <p>{value.name}</p>
+                        </div>
+                        <div className="product_star">
+                            <AiOutlineStar></AiOutlineStar>
+                            <AiOutlineStar></AiOutlineStar>
+                            <AiOutlineStar></AiOutlineStar>
+                            <AiOutlineStar></AiOutlineStar>
+                            <AiOutlineStar></AiOutlineStar>
+                        </div>
+                        <div className="product_title-price">
+                                <p>{value.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</p>
+                        </div>
+            
                     </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
-        <Col className='product' lg={3}>
-            <div className="product_img">
-                    <img src='https://tt03.chonweb.vn/wp-content/uploads/2021/03/jacket-bomber-pb-1.jpg' className='product_img-img'></img>
-                    <div className="product_cart">
-                        <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
-                        <BsFillHeartFill className='heart'></BsFillHeartFill>
-                    </div>
-            </div>
-            <div className="product_title">
-                <div className="product_title-heading">
-                    <p>Jacket bomber pb</p>
-                </div>
-                <div className="product_star">
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                    <AiOutlineStar></AiOutlineStar>
-                </div>
-                <div className="product_title-price">
-                        <p>300.000 đ</p>
-                </div>
-    
-            </div>
-        </Col>  
+                </Col>  
+                )
+            })}
+        
+     
     </Row>
     {!brand? <Pagination defaultCurrent={1} total={50} className='pagini' />: <div className='showmore__block'><button className='showmore' variant="light">Show More</button></div>}
     

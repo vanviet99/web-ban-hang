@@ -11,6 +11,9 @@ right: 10px;
     animation: linh ease-in 2s infinite;
     font-size: 50px;
 }
+.slick{
+    margin-top: 122px;
+}
 .home-top-animation:hover{
     color: aquamarine;
 }

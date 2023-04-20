@@ -1,4 +1,6 @@
 const Product = require('../modal/productModal')
+const user = require('../modal/userModal')
+
 
 const productController = {
     createproduct: async (req, res) => {
@@ -52,8 +54,8 @@ const productController = {
         try {
             const { page, pagesize} = req.body
             let listproduct =await Product.find()
-            listproduct = listproduct.filter(value => value.include(req.body.name))
-            let A = await listproduct.skip((page - 1) * pagesize).limit(pagesize)
+           let  listproduct1 = listproduct.filter(value => value.include(req.body.name))
+            let A = await listproduct1.skip((page - 1) * pagesize).limit(pagesize)
             res.status(200).json(A)
         } catch (error) {
             res.status(500).json("Something went wrong");
@@ -69,13 +71,13 @@ const productController = {
                 if(arrangement == "dec"){
                     let data= await Product.find({brand : req.body.brand})
                     data = data.sort(function(a,b){
-                        return a- b
+                        return a.price- b.price
                     })
                     res.status(200).json(data)
                 }else{
                     let data= await Product.find({brand : req.body.brand})
                     data = data.sort(function(a,b){
-                        return b - a
+                        return b.price - a.price
                     })
                     res.status(200).json(data)
                 }
@@ -86,7 +88,9 @@ const productController = {
     },
     findbyID : async(req, res) =>{
         try {
-            let data = await Product.find({_id : req.body.productId})
+            console.log(req.params.productId);
+            let data = await Product.find({_id : req.params.productId})
+            res.status(200).json(data)
         } catch (error) {
             res.status(500).json("Something went wrong");
         }
@@ -117,12 +121,18 @@ const productController = {
     },
     updateComment: async(req, res) =>{
         try {
+            console.log(req.body.cmt);
             let product = await Product.find({_id: req.body.productId})
-            let newcmt  = [...product.comment, req.body.cmt]
+            let newcmt  = [...product[0].comment, {
+                username: req.body.userdata,
+                cmt: req.body.cmt,
+            }]
+            console.log(newcmt);
             let update = await Product.updateOne({_id: req.body.productId}, {comment: newcmt})
-            let data = await Product.find({_id: req.body.productId}).populate("comment.userId")
-            req.status(200).json(data)
+            let data = await Product.find({_id: req.body.productId})
+            res.status(200).json(data[0])
         } catch (error) {
+            console.log(123);
             res.status(500).json("Something went wrong");
         }
     }

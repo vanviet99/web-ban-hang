@@ -13,6 +13,8 @@
     background-color: white !important;
 }
 .brandproduct__title{
+
+    margin-top: 130px;
     padding: 8px;
     background-color: #fafafa;
     display: flex;

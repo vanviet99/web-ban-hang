@@ -15,7 +15,7 @@ const cartController = {
           cart.list[itemIndex] = productItem;
 
           let update = await Cart.updateOne({ userId: userId }, { list: cart.list })
-          let data = await Cart.find()
+          let data = await Cart.find({userId: userId})
           res.status(200).json(data)
         } else {
           //product does not exists in cart, add new item
@@ -23,7 +23,7 @@ const cartController = {
             productId: req.body.productId, quantity: req.body.quantity
           }]
           let update = await Cart.updateOne({userId: userId}, {list: newCart})
-          let data = await Cart.find()
+          let data = await Cart.find({userId: userId})
           return res.status(200).json(data);
         }
       } else {
@@ -40,8 +40,12 @@ const cartController = {
   },
   delecart : async (req, res) =>{
     try {
-      let dele = await Cart.deleteOne({userId: req.body.userId})
-      let data = await Cart.find()
+      const { userId, productId}  = req.body
+      let cart = await Cart.find({userId:userId })
+      console.log(cart[0].list);
+      let list = cart[0].list.filter(value=> value.productId !== productId)
+      let update = await Cart.updateOne({userId: userId}, {list:list})
+      let data = await Cart.find({userId: userId})
       res.status(200).json(data)
     } catch (error) {
       res.status(500).json("Something went wrong");

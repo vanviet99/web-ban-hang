@@ -3,12 +3,14 @@ import Register from './component/Register/Register';
 import Login from './component/Login/Login';
 import Admin from './component/Admin/Admin';
 import Infoproduct from './component/infoProduct/Infoproduct';
+import Useradmin from './component/Admin/Useradmin/Useradmin';
 import {
   BrowserRouter,
   Routes, Route 
 } from "react-router-dom";
 import Home from './component/Home/Home';
 import BrandProduct from './component/BrandProduct/BrandProduct';
+import Cart from './component/cart/Cart';
 function App() {
   return (
    <BrowserRouter>
@@ -19,6 +21,8 @@ function App() {
     <Route path='/:id' element={<Infoproduct></Infoproduct>}></Route>
     <Route path='/brand/:brand' element={<BrandProduct></BrandProduct>}></Route>
     <Route path='/admin' element={<Admin></Admin>}></Route>
+    <Route path='/cart/:cartId' element={<Cart></Cart>}></Route>
+
    </Routes>
    </BrowserRouter>
   );

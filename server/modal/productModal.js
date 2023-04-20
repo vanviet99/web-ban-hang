@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 mongoose.connect('mongodb://127.0.0.1:27017/webbanhang');
+const user  = require("./userModal")
 
 const productSchema = mongoose.Schema({
     name : String,
@@ -23,10 +24,7 @@ const productSchema = mongoose.Schema({
     rate: [],
     comment: [
         {
-            userId: {
-                type: String,
-                ref: "user"
-            },
+            username: String ,
             cmt: String,
             date: {
                 type: Date,
@@ -37,6 +35,15 @@ const productSchema = mongoose.Schema({
 },{collection:'product'})
 
 const productModal = mongoose.model("product",productSchema)
+
+//  productModal.findOne({_id: '643fa3bf2c607336c4e6d4ca'}).populate('comment.userId')
+// .then(value=>{
+//     // console.log(value.comment);
+
+// })
+// .catch(value=>{
+//     console.log(value);
+// })
 // productModal.create({
 //     name:'Túi frame nữ quai xách hợp kim Balana', price: 229000,description:'Được làm từ chất liệu da PU cao cấp có độ mềm cao, túi xách nữ Balana thu hút bởi quai xách nhỏ hợp kim mạ điện sáng bóng, mảnh mai rất thanh lịch, dù mặc trang phục sang trọng hay đơn giản vẫn có thể dễ dàng kết hợp cùng chiếc túi này phù hợp khi đi dự tiệc, dạo phố gặp gỡ bạn bè',thumb:'https://tuixach.giaodienwebmau.com.vn/wp-content/uploads/2020/09/v1qjiwbt_large.jpg'
 //     ,typee :'Túi Xách'
