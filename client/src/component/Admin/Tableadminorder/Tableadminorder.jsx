@@ -1,19 +1,9 @@
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { Pagination } from 'antd';
-import './producttable.css'
+import './tableadminorder.css'
 
-function Producttable(props) {
-const setCheckeditadmproduct = props.setCheckeditadmproduct
-function editproduct(){
-  console.log(123123)
-  setCheckeditadmproduct(false)
-// props.checkeditadmproduct = false
-// console.log(props.checkeditadmproduct)
-}
-
-
-
+function Tableadminorder(props) {
   return (
    <div className="produtctadmin_table">
  <div class="box">
@@ -50,7 +40,7 @@ function editproduct(){
           <td>@fat</td>
           <td>2</td>
           <td>Jacob</td>
-          <td className='table_td-acction'> <Button variant="warning" onClick={()=>editproduct()}>Edit</Button>
+          <td className='table_td-acction'> <Button variant="warning">Edit</Button>
           <Button variant="dark">Delete</Button>
           </td>
         </tr>
@@ -65,7 +55,7 @@ function editproduct(){
           <td>@fat</td>
           <td>2</td>
           <td>Jacob</td>
-          <td className='table_td-acction'> <Button variant="warning" onClick={()=>editproduct()}>Edit</Button>
+          <td className='table_td-acction'> <Button variant="warning" >Edit</Button>
           <Button variant="dark">Delete</Button>
           </td>
         </tr>
@@ -77,4 +67,4 @@ function editproduct(){
   );
 }
 
-export default Producttable;
+export default Tableadminorder;

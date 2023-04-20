@@ -33,7 +33,7 @@ function Adminproduct() {
       </Col>
     </Row>
     <Row>
-      <Producttable checkeditadmproduct={checkeditadmproduct}></Producttable>
+      <Producttable setCheckeditadmproduct={setCheckeditadmproduct}></Producttable>
     </Row>
 </div>
     
