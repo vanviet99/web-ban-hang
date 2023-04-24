@@ -47,12 +47,13 @@
 }
 .comment_add button{
     float: right;
-    margin-top: 10px;
+    margin: 16px 0px;
 }
 .comment_add input:focus .comment_btn {
     background-color: red !important;
 }
 .comment-comment{
-    border-top: 1px solid #ccc;
+    font-size: 16px;
+    /* border-top: 1px solid #ccc; */
     border-bottom: 1px solid #ccc;
 }

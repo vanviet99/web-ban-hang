@@ -10,18 +10,23 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import axios from 'axios'
 function Home() {
   const [listProduct, setListProduct] = useState([])
-  useEffect(()=>{
+  useEffect(() => {
     axios.get("http://localhost:8000/v1/product/getall")
-    .then(value=>{
-      setListProduct(value.data)
-    })
-    .catch(value=>{
-      console.log(value);
-    })
+      .then(value => {
+        setListProduct(value.data)
+      })
+      .catch(value => {
+        console.log(value);
+      })
   }, [])
+  let brandlistall = listProduct.map(value => value.brand)
+  let brand = brandlistall.filter((value, index) => {
+    return brandlistall.indexOf(value) == index
+  })
+  window.localStorage.setItem("listbrand", JSON.stringify(brand))
   return (
     <div className='home'>
-      <Navbarr></Navbarr>
+      <Navbarr listbrnad={brand}></Navbarr>
       <PauseOnHover></PauseOnHover>
       <Support></Support>
       <Product listproduct={listProduct}></Product>
@@ -29,7 +34,7 @@ function Home() {
 
       <Footer></Footer>
       <div className='home_top'>
-      <a href='#' className='home-top-animation'><BsFillArrowUpCircleFill></BsFillArrowUpCircleFill></a>
+        <a href='#' className='home-top-animation'><BsFillArrowUpCircleFill></BsFillArrowUpCircleFill></a>
       </div>
     </div>
   )

@@ -40,3 +40,17 @@
    margin: 0 !important;
    padding-bottom: 10px  !important;
 }
+.dashboardUser{
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.dashboardUser p{
+   margin: 0;
+}
+.dashboardUser:hover p{
+   background-color: black;
+   padding: 6px;
+   border-radius: 10px;
+}

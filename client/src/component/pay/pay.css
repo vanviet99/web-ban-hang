@@ -1,0 +1,89 @@
+.payblock{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1400px;
+    height: 500px;
+    margin-top: 150px;
+}
+.payblock__left{
+    padding: 10px;
+    width: 60%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.payblock__left h3{
+    font-weight: 400;
+    color: #222;
+    font-size: 24px;
+}
+.payblock__left__input{
+    margin-top: 20px;
+    width: 100%;
+}
+.payblock__left__input input{
+    border: 1px solid #ddd;
+    padding: 0 0.75em;
+    height: 2.507em;
+    font-size: .97em;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #333;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    width: 100%;
+}
+.payblock__right{
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid #000;
+    width: 40%;
+}
+.payblock__table{
+    width: 100%;
+}
+.payblock__table__th{
+    font-weight: 500;
+}
+.payblock__price{
+    font-weight: 500;
+    color: #f4516c;
+}
+.payblock__table__tr{
+    padding-bottom: 10px !important;
+    border-bottom: 2px dotted #ccc;
+}
+.payblock__table__tr td{
+    padding-top: 10px;
+}
+.test12{
+    padding-left: 2px;
+    border-left: 2px dotted #ccc;
+}
+.test123{
+    border-top: 2px solid #000;
+}
+.totlepay{
+    font-weight: 600;
+    color: #000;
+}
+.payblock__right p{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #000;
+}
+.payblock__right button{
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #000;
+    border: 2px solid #000;
+}
+.payblock__right button:hover{
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}

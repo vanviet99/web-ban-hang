@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbarr from '../navbar/Navbarr'
 import './brandproduct.css'
@@ -6,12 +6,25 @@ import Myinfo from '../myinfo/Myinfo'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Product from '../Product/Product'
 import Footer from '../footer/Footer'
+import axios from 'axios'
 
 function BrandProduct() {
   let param = useParams().brand
+  const [dataproduct , setDataProduct] = useState([])
+  useEffect(()=>{
+    axios.get(`http://localhost:8000/v1/product/findbybrand/${param}`)
+    .then(value=>{
+      console.log(value);
+      setDataProduct(value.data)
+    })
+    .catch(value=>{
+      console.log(value);
+    })
+  },[])
+  let listbrnad =JSON.parse( window.localStorage.getItem("listbrand"))
   return (
     <div>
-      <Navbarr></Navbarr>
+      <Navbarr listbrnad={listbrnad}></Navbarr>
       <div className="brandproduct__title">
         <div className="brandproduct__title__left">
           <p className='brandproduct__title__left_back brandproduct__title__left_back__hover'>Trang chủ</p>
@@ -89,7 +102,7 @@ function BrandProduct() {
           </div>
         </div>
         <div className="brandproduct__content__right">
-              <Product brand={true}></Product>
+              <Product listproduct={dataproduct} brand={true}></Product>
         </div>
 
       </div>

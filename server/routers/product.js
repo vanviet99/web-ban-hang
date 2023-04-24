@@ -10,7 +10,7 @@ router.post("/adminupdate", productController.updateproduct)
 router.post("/updaterate", productController.updateRate)
 router.post("/updatelike",middlewreController.verifyToken, productController.updatelike)
 router.get("/findbyname", productController.findbyname)
-router.get("/findbybrand", productController.findbybrand)
+router.get("/findbybrand/:brand", productController.findbybrand)
 router.get("/findbyID/:productId", productController.findbyID),
 router.post("/comment", productController.updateComment)
 

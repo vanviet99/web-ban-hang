@@ -1,0 +1,59 @@
+.descorder{
+    position: relative;
+    margin-top: 170px;
+    padding: 20px;
+}
+.descorder h4{
+    display: flex;
+    align-items: center;
+}
+
+.descorder h4{
+    font-size: 16px;
+    color: black;
+}
+.descorder h4 p{
+    color: red;
+    margin: 0 0 0 10px ;
+}
+.img{
+    width: 50px;
+    height: 50px;
+}
+.img img{
+    width: 100%;
+    height: 100%;
+}
+.procduct__desc{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.procduct__desc p{
+    margin: 0;
+}
+.tableStyle {
+    border: none;
+    width: 100%;
+}
+.tableStyle th {
+    background-color: #cad8fa;
+    padding: 5px;
+}
+.tableStyle td {
+    background-color: #f0e7da;
+    padding: 5px;
+}
+
+.tableStyle{
+    width: 100%;
+  }
+  .desc__icon{
+    background-color: rgb(63, 69, 1);
+    padding: 0px 4px;
+    top: 0;
+    right: 20px;
+    position: absolute;
+    font-size: 30px;
+    color: yellow;
+  }
