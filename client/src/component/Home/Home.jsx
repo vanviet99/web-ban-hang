@@ -11,6 +11,8 @@ import axios from 'axios'
 function Home() {
   const [listProduct, setListProduct] = useState([])
   useEffect(() => {
+    document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
     axios.get("http://localhost:8000/v1/product/getall")
       .then(value => {
         setListProduct(value.data)

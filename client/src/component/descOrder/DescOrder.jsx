@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Navbarr from '../navbar/Navbarr'
 import { AiFillWarning } from "react-icons/ai";
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 function DescOrder() {
     const userId = useParams().userIdOrder
     const orderId = useParams().orderId
@@ -30,9 +31,9 @@ function DescOrder() {
         <div>
             <Navbarr listbrnad={listbrnad}></Navbarr>
             <div className="descorder">
-              {data.status == 'panding' ?  <div className="desc__icon">
-               <AiFillWarning></AiFillWarning>
-               </div>: ''}
+                {data.status == 'panding' ? <div className="desc__icon">
+                    <AiFillWarning></AiFillWarning>
+                </div> : ''}
                 <h3>Thông tin đơn hàng</h3>
                 <h4>MS: <p>{data._id}</p></h4>
                 <h4>Tên người nhận: <p>{data.username}</p></h4>
@@ -52,7 +53,7 @@ function DescOrder() {
                                 Sản phẩm
                             </th>
                             <th>
-                                Giá 
+                                Giá
                             </th>
                             <th>
                                 Số lượng
@@ -63,13 +64,17 @@ function DescOrder() {
                         </tr>
                     </thead>
                     <tbody>
-                        {list?.map((value,index)=>{
+                        {list?.map((value, index) => {
                             return (
                                 <tr>
                                     <td>{index + 1}</td>
-                                    <td className='procduct__desc'> 
+                                    <td className='procduct__desc'>
                                         <div className="img">
-                                            <img src={value.productId.thumb} alt="" />
+                                            <LazyLoadImage
+                                                alt={value.productId.thumb.alt}
+                                                effect="black-and-white"
+                                                src={value.productId.thumb} />
+                                            {/* <img src={value.productId.thumb} alt="" /> */}
                                         </div>
                                         <p>{value.productId.name}</p>
                                     </td>

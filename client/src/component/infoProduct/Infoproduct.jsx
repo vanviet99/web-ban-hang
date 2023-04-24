@@ -31,7 +31,8 @@ function Infoproduct() {
   //   }\
   let IDproduct = useParams().id
   useEffect(() => {
-
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     axios.get(`http://localhost:8000/v1/product/findbyID/${IDproduct}`)
       .then(value => {
         window.localStorage.setItem("listcomment", JSON.stringify(value.data[0].comment))
