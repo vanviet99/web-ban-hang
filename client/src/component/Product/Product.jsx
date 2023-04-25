@@ -26,7 +26,7 @@ function Product(props) {
                 return (
                     <Col onClick={()=>{handleclick(value._id)}} className='product' lg={3}>
                     <div className="product_img">
-                            <img src={value.thumb}className='product_img-img'></img>
+                            <img src={value.thumb} className='product_img-img'></img>
                             <div className="btnsale">-{value.sale}%</div>
                             <div className="product_cart">
                                 <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>

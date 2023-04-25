@@ -6,10 +6,7 @@ import './producttable.css'
 function Producttable(props) {
 const setCheckeditadmproduct = props.setCheckeditadmproduct
 function editproduct(){
-  console.log(123123)
   setCheckeditadmproduct(false)
-// props.checkeditadmproduct = false
-// console.log(props.checkeditadmproduct)
 }
 
 

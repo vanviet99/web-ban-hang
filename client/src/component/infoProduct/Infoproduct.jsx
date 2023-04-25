@@ -15,7 +15,6 @@ import Magnifier from "react-magnifier";
 import axios from 'axios';
 
 function Infoproduct() {
-   const [yourImage,setYourImage] = useState("https://tuixach.giaodienwebmau.com.vn/wp-content/uploads/2020/09/kgp6hvho_large-1.jpg")
   const [dataProduct, setdataProduct] = useState({})
 //   .magnifier {
 //     /* Styles for <div> around image and magnifying glass */
@@ -28,9 +27,9 @@ function Infoproduct() {
 //   }\
 let IDproduct = useParams().id
 useEffect(()=>{
-
   axios.get(`http://localhost:8000/v1/product/findbyID/${IDproduct}` )
   .then(value=>{
+    console.log(32,value.data[0])
     window.localStorage.setItem("listcomment", JSON.stringify(value.data[0].comment))
     setdataProduct(value.data[0])
   })

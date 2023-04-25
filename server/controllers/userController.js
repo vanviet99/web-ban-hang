@@ -74,6 +74,7 @@ const userController = {
     },
     paginiuser: async(req, res) =>{
         try {
+    
             const pageOptions = {
                 page: parseInt(req.query.page, 10) || 1,
                 limit: parseInt(req.query.limit, 5) || 5
