@@ -96,9 +96,29 @@
 }
 
 .adminproduct_flex{
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+.adminproduct_flex1{
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
 }
 .adminproduct_input{
-    margin-top: 10px;
+  padding: 6px;
+    margin: 10px;
+}
+.adminproduct_input__btn{
+  float: right;
+  color: #ffffff;
+  background-color: green;
+  border: unset;
+  padding: 8px 16px ;
+  border-radius: 10px;
+  box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.5);
+margin-top: 20px;
+}
+.edit{
+  background-color: rgb(255, 200, 0) ;
+  color: black;
 }

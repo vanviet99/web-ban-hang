@@ -167,6 +167,7 @@
     margin: 0;
   }
   .wrapper {
+    cursor: pointer;
     display: grid;
     grid-template-areas: 'overlap';
     place-content: center;

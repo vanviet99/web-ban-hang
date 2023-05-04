@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,12 @@ import './homeadmin.css'
 function Homeadmin() {
     const [errr,setErrr] = useState('')
     const [userdata,setUserdata] =useState([]) 
+    const [role,setRole] =useState() 
+
+
+    const handleChanges=(value)=>{
+        setRole(value)
+    }
 
     const formik =  useFormik({
         initialValues:{
@@ -25,21 +31,56 @@ function Homeadmin() {
             password : Yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,19}$/,"Password gom 8-19 ky tu ,it nhat 1 chu cai va 1 so")
         }),
         onSubmit:(value) =>{
-            axios.post('http://localhost:8000/v1/auth/register',{
-                username: value.username,
-                password: value.password
-            })
-            .then((dataa)=>{
-             setUserdata(dataa.data)
-             console.log(dataa.data)
+            console.log(role);
+            if(role){
+                let a = role ==1? false: true
+                console.log(a);
+                axios.post('http://localhost:8000/v1/auth/register',{
+                    username: value.username,
+                    password: value.password,
+                    role: a
+                })
+                .then((dataa)=>{
+                 setUserdata(dataa.data)
+                 console.log(dataa.data)
+              
+                })
+                .catch((errr)=>{
+                        setErrr(errr.response
+                            .data.message)
+                })
+            }
           
-            })
-            .catch((errr)=>{
-                    setErrr(errr.response
-                        .data.message)
-            })
         }
     })
+    const [data, setData]= useState()
+    const [data1, setdata1] = useState()
+    const [data2, setdata2] = useState()
+
+    useEffect(()=>{
+        axios.get("http://localhost:8000/v1/product/getall")
+        .then(value => {
+          setData(value.data)
+        })
+        .catch(value => {
+          console.log(value);
+        })
+        axios.get('http://localhost:8000/v1/user')
+        .then(data =>{
+            setdata1(data.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+        axios.get('http://localhost:8000/v1/order/getall')
+        .then(data =>{
+            setdata2(data.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+      },[])
+      
   return (
     <div className='Homeadmin'>
         <section class="light">
@@ -51,9 +92,8 @@ function Homeadmin() {
             <Col lg={4}>
                 <div className="homeadmin_banner">
                     <p>User</p>
-                    <h3>36,894</h3>
+                    <h3>{data1?data1.length: 0}</h3>
                     <div className="homeadmin_banner-icon">
-                       <Link to='/admin'>View all user</Link>
                        <FaUser className='homeadmin_banner-icon-icon'></FaUser>
                     </div>
                 </div>
@@ -61,9 +101,8 @@ function Homeadmin() {
             <Col lg={4}>
                 <div className="homeadmin_banner">
                     <p>Order</p>
-                    <h3>36,894</h3>
+                    <h3>{data2?data2.length: 0}</h3>
                     <div className="homeadmin_banner-icon">
-                       <Link to='/admin'>View all Order</Link>
                        <BsFillHandbagFill className='homeadmin_banner-icon-icon green'></BsFillHandbagFill>
                     </div>
                 </div>
@@ -71,9 +110,8 @@ function Homeadmin() {
             <Col lg={4}>
                 <div className="homeadmin_banner">
                     <p>Product</p>
-                    <h3>36,894</h3>
+                    <h3>{data?data.length: 0}</h3>
                     <div className="homeadmin_banner-icon">
-                       <Link to='/admin'>View all product</Link>
                        <FaProductHunt className='homeadmin_banner-icon-icon blue'></FaProductHunt>
                     </div>
                 </div>
@@ -107,6 +145,9 @@ function Homeadmin() {
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label className='lable_admin'>Password</label>
+                <div> <input name='radio' type="radio" onClick={()=>{handleChanges(1)}} className='radio'/>User   </div>
+                <div><input name='radio' type="radio" onClick={()=>{handleChanges(2)}} className='radio'/>Admin</div>
+
             </div>
             <div className="animation_buttonn">
             <button class="animated-button1">

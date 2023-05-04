@@ -3,12 +3,18 @@ import { IoIosNotifications } from "react-icons/io";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './headeradmin.css'
+import { useNavigate } from 'react-router-dom';
+
 function Headeradmin() {
 
+const nav = useNavigate()
+  const handleBack =()=>{
+      nav('/')
+  }
   return (
     <Row className='headeradmin'>
         <Col lg={2}>
-        <div class="wrapper">
+        <div class="wrapper" onClick={handleBack}>
       <div class="bg"> VT Shop </div>
       <div class="fg">  VT Shop  </div>
 </div>

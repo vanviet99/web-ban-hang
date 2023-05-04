@@ -16,65 +16,67 @@ function Evaluate(props) {
     const [countRate, setCountRate] = useState(0)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    let A = [1,2,3,4,5]
-    const handleChooseRate = (rate)=>{
+    let A = [1, 2, 3, 4, 5]
+    const handleChooseRate = (rate) => {
         setCountRate(rate)
     }
-    let token  = JSON.parse(window.localStorage.getItem("user"))?.accesstoken
-    const handleUpdateRate = (ID)=>{
-        console.log(token);
-        if(token){
-            axios.post("http://localhost:8000/v1/product/updaterate", {productId: productId, rate: countRate})
-            .then(value=>{
-                console.log(value);
-            })
-            .catch(value=>{
-                console.log(value);
-            })
+    let token = JSON.parse(window.localStorage.getItem("user"))?.accesstoken
+    const [data, setData] = useState([])
+    const handleUpdateRate = (ID) => {
+        if (token) {
+            axios.post("http://localhost:8000/v1/product/updaterate", { productId: productId, rate: countRate })
+                .then(value => {
+                    window.localStorage.setItem("updaterate", false)
+                    setData(value.data[0])
+                })
+                .catch(value => {
+                    console.log(value);
+                })
             console.log(productId, countRate);
-        }else{
+        } else {
 
         }
         setShow(false)
     }
 
-    let listrate = product.rate
-    let B =A.map(value=>{
-        let count  = 0
-        listrate?.map(value1=>{
-            if(value1 == value){ count+=1}
+    let totaldata = data.rate?.length > 0 ? data : product
+    let list = totaldata?.rate
+    let B = A.map(value => {
+        let count = 0
+        list?.map(value1 => {
+            if (value1 == value) { count += 1 }
         })
-        value = {rate: value, amount: count, phantram: (count/listrate?.length)*100}
+        value = { rate: value, amount: count, phantram: (count / list?.length) * 100 }
         return value
     })
 
-console.log(B);
+
     return (
         <Container>
             <Row>
                 <Col lg={3} className='evaluate_list'>
-                    <p className='evaluate_left'>Đánh Giá (0)</p>
+                    <p className='evaluate_left'>Đánh Giá ({list?.length})</p>
                 </Col>
                 <Col lg={9} className='evl'>
                     <p className='evaluate_center' > Đánh giá Túi Shoulder Bag móc treo rua rua DFJL</p>
-                    {B.map(value=>{
-                        return(
+                    {B.map(value => {
+                        return (
                             <Row className='evaluate'>
-                            <Col lg={9}>
-                                <Row>
-                                    <Col lg={1}>
-                                        {value.rate} <AiOutlineStar className='evaluate_icon'></AiOutlineStar>
-                                    </Col>
-                                    <Col span={11}>
-                                    <ProgressBar variant="warning" now={value.phantram} />
-                                        {/* <progress max={100} value={value.phantram} variant="warning" className='progress'></progress> */}
+                                <Col lg={9}>
+                                    <Row>
+                                        <Col lg={1}>
+                                            {value.rate} <AiOutlineStar className='evaluate_icon'></AiOutlineStar>
                                         </Col>
-                                </Row>
-                            </Col>
-                            <Col lg={3}>
-                                <span>{value.phantram}% | {value.amount} đánh giá</span>
-                            </Col>
-                        </Row>
+                                        <Col span={11}>
+                                            <ProgressBar variant="warning" now={value.phantram} />
+                                            {/* <progress max={100} value={value.phantram} variant="warning" className='progress'></progress> */}
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col lg={3}>
+                                    <span>{ value.phantram?  value.phantram.toFixed(2): 0}% | {value.amount? value.amount: 0} đánh giá</span>
+                                </Col>
+                            </Row>
                         )
                     })}
                     <Row>
@@ -87,11 +89,11 @@ console.log(B);
                     <Modal.Title>Đánh giá sản phẩm</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='modal__body'>
-                    {A.map(value=>{
-                        return(
+                    {A.map(value => {
+                        return (
                             <div className="modal__body__evaluate">
-                                <AiOutlineStar onClick={()=>{handleChooseRate(value)}} className={`evaluate_icon evaluate__star  ${value<= countRate? "action__evaluate__star": ""}` } id={value}></AiOutlineStar>
-                                <p className={` ${value<= countRate? "action__evaluate__star": ""}`}>{value} Sao</p>
+                                <AiOutlineStar onClick={() => { handleChooseRate(value) }} className={`evaluate_icon evaluate__star  ${value <= countRate ? "action__evaluate__star" : ""}`} id={value}></AiOutlineStar>
+                                <p className={` ${value <= countRate ? "action__evaluate__star" : ""}`}>{value} Sao</p>
                             </div>
                         )
                     })}
@@ -100,9 +102,10 @@ console.log(B);
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={()=>{ handleUpdateRate()}}>
+                     <Button variant="primary" onClick={() => { handleUpdateRate() }}>
                         Xác nhận
-                    </Button>
+                    </Button> 
+
                 </Modal.Footer>
             </Modal>
         </Container>

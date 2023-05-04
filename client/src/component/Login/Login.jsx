@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useFormik} from 'formik'
 import * as Yup from "yup"
 import  '../Register/register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../Admin/button.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { setloginRq } from '../../redux-saga/action'
+
+
 function Login() {
+    const dispatch = useDispatch()
     const nav = useNavigate()
+    const dataLogin = useSelector((state)=>{return state.myReducer.dataLogin})
     const [errr,setErrr] = useState('')
+    useEffect(()=>{
+        if(dataLogin.accesstoken){
+            localStorage.setItem('user',JSON.stringify(dataLogin))
+            if(dataLogin.admin) {
+                        nav('/admin')
+                    }else{
+                        nav('/')
+                    }
+        }else{
+        }
+    },[dataLogin])
     const formik =  useFormik({
         initialValues:{
         username :'',
@@ -17,25 +34,32 @@ function Login() {
             username : Yup.string().required('UserName Khong Duoc De Trong').min(6,"username qua ngan"),
             password : Yup.string().required("PassWord khong duoc de trong").matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,19}$/,"Password gom 8-19 ky tu ,it nhat 1 chu cai va 1 so")
         }),
+
         onSubmit:(value) =>{
-            axios.post('http://localhost:8000/v1/auth/login',{
+            dispatch(setloginRq( {
                 username: value.username,
                 password: value.password
-            })
-            .then((data)=>{
-                localStorage.setItem('user',JSON.stringify(data.data))
-                console.log(data.data.admin)
-                console.log(data)
-                if(data.data.admin) {
-                    nav('/admin')
-                }else{
-                    nav('/')
-                }
-            })
-            .catch((err)=>{
-                    setErrr(err.response
-                        .data)
-            })
+            }))
+
+            // localStorage.setItem('user',JSON.stringify(data.data))
+
+            // axios.post('http://localhost:8000/v1/auth/login',{
+            //     username: value.username,
+            //     password: value.password
+            // })
+            // .then((data)=>{
+            //     console.log(data.data.admin)
+            //     console.log(28, data)
+            //     if(data.data.admin) {
+            //         nav('/admin')
+            //     }else{
+            //         nav('/')
+            //     }
+            // })
+            // .catch((err)=>{
+            //         setErrr(err.response
+            //             .data)
+            // })
         }
     })
 

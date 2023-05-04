@@ -1,0 +1,10 @@
+.pay__block{
+    padding: 20px;
+    margin-top: 150px;
+}
+.pay__block h3{
+    font-size: 22px;
+}
+.pay__block__table{
+    width: 100%;
+}

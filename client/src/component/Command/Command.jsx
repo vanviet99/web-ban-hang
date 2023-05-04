@@ -56,8 +56,11 @@ function Command(props) {
                             <Col lg={3}>
                                 <p>{value.username}</p>
                             </Col>
-                            <Col lg={9}>
+                            <Col lg={6}>
                                <p> {value.cmt}</p>
+                            </Col>
+                            <Col lg={3}>
+                               <p> {(new Date(value.date)).toDateString()}</p>
                             </Col>
                         </Row>
                     )
@@ -67,8 +70,11 @@ function Command(props) {
                             <Col lg={3}>
                                 <p>{value.username}</p>
                             </Col>
-                            <Col lg={9}>
+                            <Col lg={6}>
                                <p> {value.cmt}</p>
+                            </Col>
+                            <Col lg={3}>
+                            <p> {(new Date(value.date)).toDateString()}</p>
                             </Col>
                         </Row>
                     )

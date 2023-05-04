@@ -15,7 +15,8 @@ const productController = {
                 thumb: thumb,
                 brand: brand
             })
-            res.status(200).json(data)
+            let A = await Product.find()
+            res.status(200).json(A)
         } catch (error) {
             res.status(500).json("Something went wrong");
         }
@@ -52,20 +53,24 @@ const productController = {
     },
     findbyname: async(req, res) =>{
         try {
-            const { page, pagesize} = req.body
             let listproduct =await Product.find()
-           let  listproduct1 = listproduct.filter(value => value.include(req.body.name))
-            let A = await listproduct1.skip((page - 1) * pagesize).limit(pagesize)
-            res.status(200).json(A)
+            console.log(listproduct);
+            let  listproduct1 = listproduct.filter(value => {
+                let name = value.name
+                console.log(name.toLocaleUpperCase().includes(req.body.name.toLocaleUpperCase()));
+                 return  name.toLocaleUpperCase().includes(req.body.name.toLocaleUpperCase())
+            })
+            // console.log(listproduct1);
+            res.status(200).json(listproduct1)
         } catch (error) {
             res.status(500).json("Something went wrong");
         }
     },
     findbybrand: async(req, res) =>{
         try {
-            const {  arrangement} = req.body
+            const { arrangement} = req.body
             if(!arrangement){
-                let data= await Product.find({brand : req.body.brand})
+                let data= await Product.find({brand : req.params.brand})
                 res.status(200).json(data)
             }else{
                 if(arrangement == "dec"){
@@ -109,14 +114,11 @@ const productController = {
     updateRate : async(req, res) =>{
         try {
             let product  = await Product.find({_id: req.body.productId})
-            console.log(11111);
             let newRate  = [...product[0].rate, req.body.rate]
-            console.log(123131321232222);
             let update = await Product.updateOne({_id: req.body.productId}, {rate: newRate})
             let data = await Product.find({_id: req.body.productId})
             res.status(200).json(data)
         } catch (error) {
-            console.log(123131231);
             res.status(500).json("Something went wrong");
         }
     },

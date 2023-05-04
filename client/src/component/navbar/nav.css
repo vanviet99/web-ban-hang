@@ -2,10 +2,12 @@
    text-decoration: none;
 }
 .nav_search{
+   z-index: 3000;
    border: none;
    outline: none;
    width: 300px;
    padding-left: 10px;
+   color: black !important;
 }
 .white{
     color: white;
@@ -39,4 +41,96 @@
    background-color: #212529;
    margin: 0 !important;
    padding-bottom: 10px  !important;
+}
+.dashboardUser{
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.dashboardUser p{
+   margin: 0;
+}
+.dashboardUser:hover p{
+   background-color: black;
+   padding: 6px;
+   border-radius: 10px;
+}
+.nav__input__block{
+   position: relative;
+}
+
+
+
+.nav__input__block__data::-webkit-scrollbar {
+   width: 10px;
+ }
+ 
+ /* Track */
+ .nav__input__block__data::-webkit-scrollbar-track {
+   background: #f1f1f1; 
+ }
+  
+ /* Handle */
+ .nav__input__block__data::-webkit-scrollbar-thumb {
+   background: #888; 
+ }
+ 
+ /* Handle on hover */
+ .nav__input__block__data::-webkit-scrollbar-thumb:hover {
+   background: #555; 
+ }
+
+.nav__input__block__data{
+   z-index: 100;
+   overflow: scroll;
+   border-radius: 10px;
+   position: absolute;
+   top: 50px;
+   left: 0;
+   width: 100%;
+   height: 300px;
+   background-color: aliceblue;
+}
+.more{
+   margin: 0;
+   width: 100%;
+}
+.more{
+   white-space: nowrap; 
+   overflow: hidden;
+   text-overflow: ellipsis; /* text-overflow: clip; */
+ }
+.brandproduct__content__left__listproduct__item__desc p{
+   font-size: 14px !important;
+}
+.brandproduct__content__left__listproduct__item__desc span{
+   font-size: 14px;
+}
+.brandproduct__content__left__listproduct__item__img{
+   width: 80px;
+   height: 80px;
+}
+.brandproduct__content__left__listproduct__item{
+   justify-content: flex-start !important;
+   margin-left: 0 !important;
+}
+.brandproduct__content__left__listproduct__item__img img{
+   width: 60px !important;
+}
+
+.test{
+   position: relative;
+}
+
+.fades{
+   z-index: 100;
+   width: 100%;
+   height: 100vh;
+   position: absolute;
+   background-color: #212529;
+   opacity: 0.5;
+}
+.input__nav{
+   z-index: 5000;
 }

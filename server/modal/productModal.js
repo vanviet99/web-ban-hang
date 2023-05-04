@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-mongoose.connect('mongodb://127.0.0.1:27017/webbanhang');
+mongoose.connect('mongodb+srv://ketnoidb:ketnoidb@cluster0.yogryju.mongodb.net/?retryWrites=true&w=majority');
 const user  = require("./userModal")
 
 const productSchema = mongoose.Schema({
