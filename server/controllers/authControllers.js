@@ -12,7 +12,8 @@ const authController = {
                 const password = await bcrypt.hash(req.body.password,salt)
                 let newusser = await userModal.create({
                     username : req.body.username,
-                    password: password
+                    password: password,
+                    admin: req.body.role
                 })
                 const userdata = await userModal.find()
                 res.status(200).json({message:'sucsess',userdata})

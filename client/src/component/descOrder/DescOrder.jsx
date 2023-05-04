@@ -3,7 +3,7 @@ import "./descorder.css"
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Navbarr from '../navbar/Navbarr'
-import { AiFillWarning } from "react-icons/ai";
+import { AiFillWarning , AiFillCheckCircle} from "react-icons/ai";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 function DescOrder() {
@@ -26,14 +26,15 @@ function DescOrder() {
                 console.log(value);
             })
     }, [])
-
     return (
         <div>
             <Navbarr listbrnad={listbrnad}></Navbarr>
             <div className="descorder">
                 {data.status == 'panding' ? <div className="desc__icon">
                     <AiFillWarning></AiFillWarning>
-                </div> : ''}
+                </div> : <div className="desc__icon__1">
+                            {data.status}
+                </div>  }
                 <h3>Thông tin đơn hàng</h3>
                 <h4>MS: <p>{data._id}</p></h4>
                 <h4>Tên người nhận: <p>{data.username}</p></h4>

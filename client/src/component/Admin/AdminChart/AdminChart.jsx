@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import './adminchart.css'
+import axios from 'axios';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'], 
+ const data = {
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
       label: 'Quantyti',
@@ -30,11 +31,23 @@ export const data = {
     },
   ],
 };
-
-export function AdminChart() {
-  return  <div className="adminchart">
-  <Pie data={data} />;
-</div>
+ function AdminChart() {
+  // const [data, setData] = useState([1,2,3])
+useEffect(()=>{
+  axios.get("http://localhost:8000/v1/product/getall")
+  .then(value => {
+    console.log(value.data);
+    // setData(value.data)
+  })
+  .catch(value => {
+    console.log(value);
+  })
+},[])
+  return (
+    <div className="adminchart">
+      <Pie data={data} />;
+    </div>
+  )
 }
 
 export default AdminChart

@@ -30,7 +30,7 @@ const orderController = {
     updateorder: async (req, res) => {
         try {
             let update = await Order.updateOne({ _id: req.body.orderId }, { status: req.body.status })
-            let data = await Order.find()
+            let data = await Order.find().populate("userId")
             res.status(200).json(data)
         } catch (error) {
             res.status(500).json("Something went wrong");
@@ -38,7 +38,6 @@ const orderController = {
     },
     getorderlogin: async (req, res) => {
         try {
-            console.log(req.params);
             let data = await Order.find({ userId: req.params.orderUserId })
             console.log(data);
             res.status(200).json(data)

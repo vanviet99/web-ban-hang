@@ -14,36 +14,27 @@ import Command from '../Command/Command';
 import Magnifier from "react-magnifier";
 import axios from 'axios';
 import { notification, Space } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { addtocartRq, getproductinfoRq } from '../../redux-saga/action';
 
 
 function Infoproduct() {
-  const [dataProduct, setdataProduct] = useState({})
-  const [amount, setAmount] = useState(1)
 
-  //   .magnifier {
-  //     /* Styles for <div> around image and magnifying glass */
-  //   }
-  //   .magnifier-image {
-  //     /* Styles for large image */ 
-  //   }
-  //   .magnifying-glass {
-  //     /* Styles for magnifying glass */
-  //   }\
+  // const [dataCart, setDatacart] = useState([])
+  const nav = useNavigate()
+  const [amount, setAmount] = useState(1)
+  const dispatch = useDispatch()
+  const dataProducts = useSelector((state) => { return state.myReducer.productInfo })
+  const loading = useSelector((state) => { return state.myReducer.loading })
+  const dataCart = useSelector((state) => { return state.myReducer.newCart })
   let IDproduct = useParams().id
+  let listbrnad = JSON.parse(window.localStorage.getItem("listbrand"))
+
   useEffect(() => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    axios.get(`http://localhost:8000/v1/product/findbyID/${IDproduct}`)
-      .then(value => {
-        window.localStorage.setItem("listcomment", JSON.stringify(value.data[0].comment))
-
-        setdataProduct(value.data[0])
-      })
-      .catch(value => {
-        console.log(value)
-      })
-  }, [])
-  let listbrnad = JSON.parse(window.localStorage.getItem("listbrand"))
+    dispatch(getproductinfoRq({ IDproduct: IDproduct }))
+  }, [IDproduct])
 
   const handleChangeAmount = (value) => {
     if (value == 0) {
@@ -52,39 +43,38 @@ function Infoproduct() {
         setAmount(newamount)
       }
     } else {
-      if (amount <= dataProduct.stock) {
+      if (amount <= dataProducts.stock) {
         let newamount = amount + 1
         setAmount(newamount)
       }
     }
   }
-  const [count, setCount] = useState()
 
-  const [dataCart, setDatacart] = useState([])
   let userId = JSON.parse(window.localStorage.getItem("user"))._id
   const handleAddtoCart = () => {
-    axios.post("http://localhost:8000/v1/cart/cart", { userId: userId, productId: dataProduct._id, quantity: amount })
-      .then(value => {
+    dispatch(addtocartRq({
+      userId: userId,
+      productId: dataProducts._id,
+      quantity: amount,
+      buy: false,
+      callback: function () {
         openNotificationWithIcon('success')
-        setCount(value.data[0].list.length)
-        setDatacart(value.data[0].list)
-      })
-      .catch(value => {
-        console.log(value);
-      })
+      }
+    }))
   }
-  const nav = useNavigate()
-  const buynow =()=>{
-    axios.post("http://localhost:8000/v1/cart/cart", { userId: userId, productId: dataProduct._id, quantity: amount })
-      .then(value => {
-        setCount(value.data[0].list.length)
-        setDatacart(value.data[0].list)
+  const buynow = () => {
+    dispatch(addtocartRq({
+      userId: userId,
+      productId: dataProducts._id,
+      quantity: amount,
+      buy: true,
+      callback: function () {
+        openNotificationWithIcon('success')
         nav(`/cart/${userId}`)
-      })
-      .catch(value => {
-        console.log(value);
-      })
+      }
+    }))
   }
+
   const [api, contextHolder] = notification.useNotification();
   const openNotificationWithIcon = (type) => {
     api[type]({
@@ -94,8 +84,9 @@ function Infoproduct() {
     });
   };
   return (
-    <div>
-            {contextHolder}
+    <div className='info__Product'>
+      {loading ? <div className='Loading__info'><p>Loading...</p></div> : ''}
+      {contextHolder}
       <Navbarr dataCart={dataCart} listbrnad={listbrnad}></Navbarr>
       <Container>
         <div className="list">
@@ -105,16 +96,16 @@ function Infoproduct() {
       <Container className='container_list'>
         <Row className="infroproduct">
           <Col lg={5} className=''>
-            <Magnifier src={dataProduct.thumb} />
+            <Magnifier src={dataProducts.thumb} />
           </Col>
           <Col lg={4}>
             <div className="list_danhmuc">
-              <p>Danh Mục: <Link to='/' className='list_danhmuc-link'>{dataProduct.brand}</Link></p>
+              <p>Danh Mục: <Link to='/' className='list_danhmuc-link'>{dataProducts.brand}</Link></p>
             </div>
             <div className="list_title">
-              <h3>{dataProduct.name}</h3>
+              <h3>{dataProducts.name}</h3>
               <div className="list_title-price">
-                {dataProduct.price?.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}
+                {dataProducts.price?.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}
               </div>
               <div className="list_btn">
                 <div className="list_btn-left">
@@ -128,7 +119,7 @@ function Infoproduct() {
               </div>
               <div className="list_thanhtien">
                 <p>Thành Tiền :</p>
-                <span> {dataProduct.price?.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
+                <span> {dataProducts.price?.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
               </div>
               <div className="list_btn-have">
                 <button onClick={buynow} className='btn_have'>MUA NGAY<br></br><span>Gọi Điện và xác nhận giao hàng tận nơi</span></button>
@@ -176,12 +167,13 @@ function Infoproduct() {
           </Col>
         </Row>
       </Container>
-      <Description data={dataProduct.description}></Description>
-      <Evaluate productId={IDproduct} product={dataProduct}></Evaluate>
+      <Description data={dataProducts.description}></Description>
+      <Evaluate productId={IDproduct} product={dataProducts}></Evaluate>
       <Command productId={IDproduct} ></Command>
       <Footer></Footer>
-
     </div>
+
+
   )
 }
 

@@ -81,4 +81,10 @@
     margin-left: -50px;
     cursor: pointer;
   }
-  
+  .product__table__img{
+    width: 80px;
+    height: 80px;
+  }
+  .produtctadmin_table{
+    margin-top: 30px;
+  }

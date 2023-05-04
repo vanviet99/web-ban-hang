@@ -13,12 +13,13 @@ import {  notification, Space } from 'antd';
 function Cart() {
     let listbrnad = JSON.parse(window.localStorage.getItem("listbrand"))
     const [btnchange, setBtnchange] = useState(false)
-
+    const [loadings, setLoadings] = useState(true)
     const [listcartcurrent, setlistcartcurrent] = useState([])
     const userId = useParams().cartId
     useEffect(() => {
         axios.get(`http://localhost:8000/v1/cart/get/${userId}`)
             .then(value => {
+                setLoadings(false)
                 setlistcartcurrent(value.data[0].list)
             })
             .catch(value => {
@@ -68,12 +69,16 @@ function Cart() {
             <Navbarr dataCart={listcartcurrent} listbrnad={listbrnad}></Navbarr>
             <div className="Cart__content">
                 <div className="Cart__content__left">
+                    {loadings? <div class="loader posi"></div>:
+                    <>
                     <Tablecp setBtnchange={setBtnchange} setlistcartcurrent={setlistcartcurrent} listcartcurrent={listcartcurrent}></Tablecp>
                     <div className="Cart__content__left__btn">
                         <button onClick={handleBack}> <AiOutlineArrowLeft></AiOutlineArrowLeft>TIẾP TỤC XEM SẢN PHẨM</button>
                         {btnchange ? <button onClick={handleUpdate}>CẬP NHẬT GIỎ HÀNG</button> : ''}
 
                     </div>
+                    </>
+                     }
                 </div>
                 <div className="Cart__content__right">
                     <div className="Cart__content__right__title">

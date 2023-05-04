@@ -5,12 +5,26 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/reset.css';
 import reportWebVitals from './reportWebVitals';
+import {combineReducers, createStore, applyMiddleware} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { Provider } from 'react-redux';
+import myReducer from './redux-saga/reducer';
+import mysaga from './redux-saga/saga';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const sagaMiddleware = createSagaMiddleware()
+const rootReducer = combineReducers({myReducer})
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+sagaMiddleware.run(mysaga)
+
+
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
+   
   </React.StrictMode>
 );
 

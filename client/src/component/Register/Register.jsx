@@ -27,8 +27,7 @@ function Register() {
              nav('/login')
             })
             .catch((err)=>{
-                    setErrr(err.response
-                        .data.message)
+                    setErrr(err.response?.data?.message)
             })
         }
     })

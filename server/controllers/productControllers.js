@@ -15,7 +15,8 @@ const productController = {
                 thumb: thumb,
                 brand: brand
             })
-            res.status(200).json(data)
+            let A = await Product.find()
+            res.status(200).json(A)
         } catch (error) {
             res.status(500).json("Something went wrong");
         }
@@ -52,11 +53,15 @@ const productController = {
     },
     findbyname: async(req, res) =>{
         try {
-            const { page, pagesize} = req.body
             let listproduct =await Product.find()
-           let  listproduct1 = listproduct.filter(value => value.include(req.body.name))
-            let A = await listproduct1.skip((page - 1) * pagesize).limit(pagesize)
-            res.status(200).json(A)
+            console.log(listproduct);
+            let  listproduct1 = listproduct.filter(value => {
+                let name = value.name
+                console.log(name.toLocaleUpperCase().includes(req.body.name.toLocaleUpperCase()));
+                 return  name.toLocaleUpperCase().includes(req.body.name.toLocaleUpperCase())
+            })
+            // console.log(listproduct1);
+            res.status(200).json(listproduct1)
         } catch (error) {
             res.status(500).json("Something went wrong");
         }

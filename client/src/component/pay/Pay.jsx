@@ -15,11 +15,13 @@ function Pay() {
     const email = useRef()
     let listbrnad = JSON.parse(window.localStorage.getItem("listbrand"))
     const [data, setData] = useState([])
+    const[loadingtb, setLoadingtb] = useState(true)
     const userId = useParams().userId
     useEffect(() => {
         axios.get(`http://localhost:8000/v1/cart/get/${userId}`)
             .then(value => {
                 setData([...value.data[0].list])
+                setLoadingtb(false)
             })
             .catch(value => {
                 console.log(value);
@@ -118,6 +120,8 @@ function Pay() {
                                 <th className='payblock__table__th test12'>TẠM TÍNH</th>
                             </tr>
                         </thead>
+                        {loadingtb ?
+                        <div class="loader posi"></div>:
                         <tbody>
                             {data?.map(value => {
                                 return (
@@ -136,6 +140,7 @@ function Pay() {
                                 <td className='payblock__price test12'>{totalprice.toLocaleString('it-IT')} đ</td>
                             </tr>
                         </tbody>
+                        }
                     </table>
                     <p>Trả tiền mặt khi nhận hàng</p>
                     <button onClick={handleOrder}>ĐẶT HÀNG</button>

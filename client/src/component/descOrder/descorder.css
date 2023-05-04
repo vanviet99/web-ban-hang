@@ -56,4 +56,17 @@
     position: absolute;
     font-size: 30px;
     color: yellow;
+    border-radius: 10px;
+
+  }
+  .desc__icon__1{
+
+    background-color: rgb(195, 195, 195);
+    padding: 0px 4px;
+    top: 0;
+    right: 20px;
+    position: absolute;
+    font-size: 20px;
+    color: black;
+    border-radius: 10px;
   }

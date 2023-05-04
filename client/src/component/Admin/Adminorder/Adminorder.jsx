@@ -7,11 +7,11 @@ import { Orderadmintable } from '../orderadminTable/Orderadmintable'
 function Adminorder() {
   return (
     <div>
-        <Row>
+        {/* <Row>
           <Col lg={12} >
           <Orderadmintable></Orderadmintable>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col lg={12} >
           <Tableadminorder></Tableadminorder>

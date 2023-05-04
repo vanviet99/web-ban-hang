@@ -25,15 +25,18 @@ function Product(props) {
                     <span className='aaaa'></span>
                 </div>
                 {listproduct.map(value => {
+                    let sum  = 0
+                    value.rate.map(value=>{sum += value })
+                    console.log(sum);
+                    let rate= (sum /value.rate.length).toFixed(1)
+                    let rates = rate?rate: 10
                     return (
-
                         <Col onClick={() => { handleclick(value._id) }} className='product' lg={3}>
                             <div className="product_img">
                                 <LazyLoadImage
                                     alt={value.thumb.alt}
                                     effect="black-and-white"
                                     src={value.thumb} />
-                                {/* <img src={value.thumb} className='product_img-img'></img> */}
                                 <div className="btnsale">-{value.sale}%</div>
                                 <div className="product_cart">
                                     <AiOutlineShoppingCart className='product_cart-cart'></AiOutlineShoppingCart>
@@ -45,11 +48,12 @@ function Product(props) {
                                     <p>{value.name}</p>
                                 </div>
                                 <div className="product_star">
-                                    <AiOutlineStar></AiOutlineStar>
-                                    <AiOutlineStar></AiOutlineStar>
-                                    <AiOutlineStar></AiOutlineStar>
-                                    <AiOutlineStar></AiOutlineStar>
-                                    <AiOutlineStar></AiOutlineStar>
+                                    { [1, 2, 3, 4, 5].map(value => {
+                                        return(
+                                            <AiOutlineStar className={value <= rates?'iconsss':''}></AiOutlineStar>
+                                        )
+                                    })}
+
                                 </div>
                                 <div className="product_title-price">
                                     <p>{value.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
@@ -62,7 +66,7 @@ function Product(props) {
 
 
             </Row>
-            {!brand ? <Pagination defaultCurrent={1} total={50} className='pagini' /> : <div className='showmore__block'><button className='showmore' variant="light">Show More</button></div>}
+            {/* {!brand ? <Pagination defaultCurrent={1} total={50} className='pagini' /> : <div className='showmore__block'><button className='showmore' variant="light">Show More</button></div>} */}
 
         </Container>
 

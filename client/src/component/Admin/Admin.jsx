@@ -9,7 +9,6 @@ function Admin() {
     const nav = useNavigate()
     useEffect(() => {
      const user = JSON.parse(localStorage.getItem('user'))?JSON.parse(localStorage.getItem('user')) : false
-     console.log(user.admin)
      if(!user.admin){
        return  nav('/login')
      }

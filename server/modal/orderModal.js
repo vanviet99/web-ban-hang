@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const productModal = require('../modal/productModal')
 const userModal = require('../modal/userModal')
-mongoose.connect('mongodb://127.0.0.1:27017/webbanhang');
+mongoose.connect('mongodb+srv://ketnoidb:ketnoidb@cluster0.yogryju.mongodb.net/?retryWrites=true&w=majority');
 
 const orderSchema = mongoose.Schema({
     userId:{
